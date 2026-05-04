@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Álbum de insignias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --fondo: #f7efe3;
+  --papel: #fffaf0;
+  --tinta: #4f4035;
+  --suave: #9d806b;
+  --verde: #9fbd8c;
+  --verde-oscuro: #6f8f5f;
+  --sombra: rgba(93, 68, 43, 0.16);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 35%),
+    linear-gradient(135deg, #f8ead7, #eef3df);
+  color: var(--tinta);
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 18px 54px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-family: "Kalam", cursive;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  color: var(--verde-oscuro);
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: var(--suave);
+}
+
+.album {
+  position: relative;
+  background: var(--papel);
+  border-radius: 34px;
+  padding: 30px;
+  box-shadow: 0 20px 50px var(--sombra);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  min-width: 160px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+.stat-number {
+  font-family: "Kalam";
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+}
+
+.category {
+  margin-bottom: 34px;
+}
+
+.category-title {
+  font-family: "Kalam";
+  font-size: 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.badge {
+  min-height: 260px;
+  padding: 14px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.75);
+  text-align: center;
+  position: relative;
+}
+
+.badge.locked {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.badge-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}
+
+.badge-name {
+  font-weight: 800;
+}
+
+.badge-meta {
+  font-family: "Kalam";
+  color: var(--suave);
+}
+
+.badge.locked::after {
+  content: "🔒";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+</style>
+</head>
+
+<body>
+<main class="wrapper">
+
+<header class="header">
+<h1>🏅 Álbum de insignias</h1>
+<p>{{USER}}</p>
+</header>
+
+<section class="album">
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-number">{{TOTAL_DESBLOQUEADAS}}</div>
+    <div>desbloqueadas</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">{{TOTAL_INSIGNIAS}}</div>
+    <div>totales</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">{{PORCENTAJE}}%</div>
+    <div>completado</div>
+  </div>
+</div>
+
+{{CATEGORIAS}}
+
+</section>
+
+</main>
+</body>
+</html>
