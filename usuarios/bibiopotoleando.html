@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Álbum de insignias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --fondo: #f7efe3;
+  --papel: #fffaf0;
+  --tinta: #4f4035;
+  --suave: #9d806b;
+  --verde: #9fbd8c;
+  --verde-oscuro: #6f8f5f;
+  --rosa: #e7b7a8;
+  --amarillo: #f5d58b;
+  --sombra: rgba(93, 68, 43, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 35%),
+    linear-gradient(135deg, #f8ead7, #eef3df);
+  color: var(--tinta);
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 18px 54px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-family: "Kalam", cursive;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  color: var(--verde-oscuro);
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: var(--suave);
+  font-size: 1.05rem;
+}
+
+.album {
+  position: relative;
+  background: var(--papel);
+  border-radius: 34px;
+  padding: 30px;
+  box-shadow: 0 20px 50px var(--sombra);
+  border: 2px solid rgba(255,255,255,0.75);
+}
+
+.album::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 2px dashed rgba(159,189,140,0.45);
+  border-radius: 26px;
+  pointer-events: none;
+}
+
+.sticker {
+  position: absolute;
+  z-index: 2;
+  font-size: 2rem;
+  filter: drop-shadow(0 5px 8px rgba(93,68,43,0.15));
+}
+
+.sticker.one {
+  top: -18px;
+  left: 28px;
+}
+
+.sticker.two {
+  right: 34px;
+  top: -20px;
+}
+
+.sticker.three {
+  bottom: -18px;
+  left: 50%;
+}
+
+.stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  min-width: 160px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 8px 18px rgba(93,68,43,0.08);
+  text-align: center;
+}
+
+.stat-number {
+  font-family: "Kalam", cursive;
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--suave);
+  font-size: 0.9rem;
+}
+
+.category {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 34px;
+}
+
+.category-title {
+  font-family: "Kalam", cursive;
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.badge {
+  min-height: 260px;
+  padding: 14px 12px 16px;
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 32px,
+      rgba(159,189,140,0.18) 33px
+    );
+  box-shadow: 0 10px 24px rgba(93,68,43,0.09);
+  border: 1px solid rgba(111,143,95,0.18);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.badge.locked {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.badge-img {
+  width: 165px;
+  height: 165px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 8px 12px rgba(93,68,43,0.14));
+}
+
+.badge-name {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--tinta);
+  line-height: 1.15;
+}
+
+.badge-meta {
+  margin-top: 6px;
+  font-family: "Kalam", cursive;
+  color: var(--suave);
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.badge.locked .badge-name::after {
+  content: " 🔒";
+}
+
+.footer-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  text-align: center;
+  font-family: "Kalam", cursive;
+  font-size: 1.2rem;
+  color: var(--suave);
+}
+
+@media (max-width: 680px) {
+  .album {
+    padding: 22px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .badge {
+    min-height: 220px;
+  }
+
+  .badge-img {
+    width: 130px;
+    height: 130px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="wrapper">
+  <header class="header">
+    <h1>🏅 Álbum de insignias</h1>
+    <p>Logros desbloqueados por bibiopotoleando</p>
+  </header>
+
+  <section class="album">
+    <div class="sticker one">✨</div>
+    <div class="sticker two">🌿</div>
+    <div class="sticker three">🏆</div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">11</div>
+        <div class="stat-label">desbloqueadas</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">84</div>
+        <div class="stat-label">totales</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">13%</div>
+        <div class="stat-label">completado</div>
+      </div>
+    </div>
+
+    <section class='category'><h2 class='category-title'>STREAMS</h2><div class='grid'>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_presente.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presente ✨</div>
+                            <div class='badge-meta'>1 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_primera_semana.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primera semana 🌱</div>
+                            <div class='badge-meta'>3 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_habitual_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Habitual del canal 🌙</div>
+                            <div class='badge-meta'>7 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_se_queda_por_aqui.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Se queda por aquí ☕</div>
+                            <div class='badge-meta'>15 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_compania_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Compañía constante 📚</div>
+                            <div class='badge-meta'>30 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_parte_del_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Parte del estudio 🌿</div>
+                            <div class='badge-meta'>50 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_presencia_bonita.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presencia bonita 🧸</div>
+                            <div class='badge-meta'>75 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_raiz_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Raíz del bosque 🌳</div>
+                            <div class='badge-meta'>100 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_guardian_directo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del directo 🕯️</div>
+                            <div class='badge-meta'>150 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_alma_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma del canal 💚</div>
+                            <div class='badge-meta'>200 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_leyenda_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda opotoleante 🏆</div>
+                            <div class='badge-meta'>300 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_bosque_eterno.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del bosque eterno 🌌</div>
+                            <div class='badge-meta'>500 directos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>EJERCICIO</h2><div class='grid'>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_primer_paso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer paso 🌱</div>
+                            <div class='badge-meta'>1 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_calentando_motores.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Calentando motores 👟</div>
+                            <div class='badge-meta'>3 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_semana_activa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Semana activa 💪</div>
+                            <div class='badge-meta'>7 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_constancia_bonita.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia bonita 🌿</div>
+                            <div class='badge-meta'>15 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_habito_desbloqueado.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Hábito desbloqueado 🏅</div>
+                            <div class='badge-meta'>30 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_energia_estable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Energía estable ⚡</div>
+                            <div class='badge-meta'>50 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_ritmo_firme.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo firme 🔥</div>
+                            <div class='badge-meta'>75 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_leyenda_fitness.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda fitness 🏆</div>
+                            <div class='badge-meta'>100 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_cuerpo_en_movimiento.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cuerpo en movimiento 🌊</div>
+                            <div class='badge-meta'>150 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_energia_imparable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Energía imparable 🌟</div>
+                            <div class='badge-meta'>200 días</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>ESTUDIO</h2><div class='grid'>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_primer_pomo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer pomo 🍅</div>
+                            <div class='badge-meta'>1 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_calentando_motores.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Calentando motores 👟</div>
+                            <div class='badge-meta'>10 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_arranque_estudioso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Arranque estudioso 📖</div>
+                            <div class='badge-meta'>25 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_ritmo_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo inicial 📝</div>
+                            <div class='badge-meta'>50 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_primer_bloque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer bloque 📚</div>
+                            <div class='badge-meta'>80 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_cogiendo_habito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cogiendo hábito 🌱</div>
+                            <div class='badge-meta'>120 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_flujo_suave.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Flujo suave 🌊</div>
+                            <div class='badge-meta'>170 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_constancia_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia inicial ✍️</div>
+                            <div class='badge-meta'>230 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_zona_de_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Zona de estudio 🧠</div>
+                            <div class='badge-meta'>300 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_rutina_activa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Rutina activa ⏳</div>
+                            <div class='badge-meta'>400 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_en_marcha.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>En marcha 🌿</div>
+                            <div class='badge-meta'>520 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_ritmo_estable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo estable 🔥</div>
+                            <div class='badge-meta'>660 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_casi_habito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Casi hábito 🌼</div>
+                            <div class='badge-meta'>820 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_constancia_real.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia real ☕</div>
+                            <div class='badge-meta'>1000 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_ritmo_serio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo serio 📘</div>
+                            <div class='badge-meta'>1200 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_firme.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente firme 🧠✨</div>
+                            <div class='badge-meta'>1400 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_entrenada.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente entrenada 🧩</div>
+                            <div class='badge-meta'>1600 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_disciplina_real.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Disciplina real ⛩️</div>
+                            <div class='badge-meta'>1800 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_estudio_profundo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Estudio profundo 📚✨</div>
+                            <div class='badge-meta'>2000 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_foco_inquebrantable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Foco inquebrantable 🎯</div>
+                            <div class='badge-meta'>2250 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_maestria_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Maestría constante 🏅</div>
+                            <div class='badge-meta'>2500 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_maestra.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente maestra 🧿</div>
+                            <div class='badge-meta'>2700 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_leyenda_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del estudio 🏆</div>
+                            <div class='badge-meta'>2850 pomodoros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_consigue_plaza.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>La plaza es mía 👑</div>
+                            <div class='badge-meta'>3000 pomodoros</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>MINIJUEGOS</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/minijuegos_primer_acierto.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer acierto 🎯</div>
+                            <div class='badge-meta'>1 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_ojo_despierto.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ojo despierto 👀</div>
+                            <div class='badge-meta'>5 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_ojo_fino.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ojo fino 🔎</div>
+                            <div class='badge-meta'>10 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_cerebrito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cerebrito 🧠</div>
+                            <div class='badge-meta'>25 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_maestria_mini.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Maestría mini 🎮</div>
+                            <div class='badge-meta'>50 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_descanso_brillante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Descanso brillante ✨</div>
+                            <div class='badge-meta'>75 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_leyenda_descanso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del descanso 🏆</div>
+                            <div class='badge-meta'>100 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_mente_rapida.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente rápida ⚡</div>
+                            <div class='badge-meta'>150 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_rey_minijuego.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Rey/Reina del minijuego 👑</div>
+                            <div class='badge-meta'>200 aciertos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>BOSQUE</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_primer_arbol.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer árbol 🌱</div>
+                            <div class='badge-meta'>1 logros</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_pequeno_jardin.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Pequeño jardín 🌿</div>
+                            <div class='badge-meta'>3 logros</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_coleccionista_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Coleccionista inicial 📗</div>
+                            <div class='badge-meta'>5 logros</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_bosquecito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosquecito 🌳</div>
+                            <div class='badge-meta'>10 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_guardian_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del bosque 🍃</div>
+                            <div class='badge-meta'>25 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_album_frondoso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Álbum frondoso 🌲</div>
+                            <div class='badge-meta'>50 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_raices_fuertes.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Raíces fuertes 🪵</div>
+                            <div class='badge-meta'>75 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_bosque_legendario.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosque legendario 🏆</div>
+                            <div class='badge-meta'>100 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_ecosistema_vivo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ecosistema vivo 🦋</div>
+                            <div class='badge-meta'>125 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_bosque_magico.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosque mágico ✨</div>
+                            <div class='badge-meta'>150 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_refugio_natural.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Refugio natural 🏕️</div>
+                            <div class='badge-meta'>175 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_corazon_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Corazón del bosque 💚</div>
+                            <div class='badge-meta'>200 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_reino_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Reino del bosque 👑</div>
+                            <div class='badge-meta'>250 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_espiritu_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del bosque 🌌</div>
+                            <div class='badge-meta'>300 logros</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>APOYO</h2><div class='grid'>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_primer_apoyo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer apoyo 💛</div>
+                            <div class='badge-meta'>1 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_apoyo_bonito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Apoyo bonito 🌼</div>
+                            <div class='badge-meta'>5 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_apoyo_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Apoyo constante ☕</div>
+                            <div class='badge-meta'>10 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_compania_silenciosa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Compañía silenciosa 🌙</div>
+                            <div class='badge-meta'>25 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_alma_de_fondo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma de fondo 🕯️</div>
+                            <div class='badge-meta'>50 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_guardian_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del rincón 💚</div>
+                            <div class='badge-meta'>100 logros</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>GENERAL</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/general_primeros_pasos.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primeros pasos ✨</div>
+                            <div class='badge-meta'>3 logros</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/general_constancia_suave.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia suave 🌙</div>
+                            <div class='badge-meta'>6 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_habitante_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Habitante del canal ☕</div>
+                            <div class='badge-meta'>10 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_alma_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma opotoleante 💚</div>
+                            <div class='badge-meta'>15 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_coleccionista_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Coleccionista del rincón 🌿</div>
+                            <div class='badge-meta'>25 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_presencia_total.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presencia total 🕯️</div>
+                            <div class='badge-meta'>35 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_leyenda_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del rincón 🏆</div>
+                            <div class='badge-meta'>45 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_icono_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Icono opotoleante 👑</div>
+                            <div class='badge-meta'>55 logros</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_espiritu_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del canal 🌌</div>
+                            <div class='badge-meta'>75 logros</div>
+                        </div></div></section>
+
+    <div class="footer-note">
+      ✨ álbum generado con mucho mimo ✨
+    </div>
+  </section>
+</main>
+</body>
+</html>
