@@ -190,307 +190,49 @@ html_content = """<!DOCTYPE html>
   <h2>🔗 Guías relacionadas</h2>
 
   <div class="links">
-
     <p>🌳 Bosque virtual:<br>
-      <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">
-        https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html</a>
     </p>
 
     <p>📝 Tareas:<br>
-      <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">
-        https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html</a>
     </p>
 
     <p>🎁 Canjeos:<br>
-      <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">
-        https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html</a>
     </p>
 
     <p>📌 Estados:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/estados.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">https://bibiopotoleando.github.io/estados-y-bebidas/estados.html</a>
     </p>
 
     <p>☕ Bebidas:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html</a>
     </p>
 
     <p>🎯 Retos:<br>
-      <a href="https://bibiopotoleando.github.io/retos/retos.html">
-        https://bibiopotoleando.github.io/retos/retos.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/retos/retos.html">https://bibiopotoleando.github.io/retos/retos.html</a>
     </p>
 
     <p>🎮 Minijuego:<br>
-      <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">
-        https://bibiopotoleando.github.io/minijuego-guia/index.html
-      </a>
+      <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">https://bibiopotoleando.github.io/minijuego-guia/index.html</a>
     </p>
 
-    <p>📦 Material:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/material.html
-      </a>
-    </p>
-
-  <p>🏅 Insignias:<br>
+    <p>🏅 Insignias:<br>
       <a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html">
         https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html
       </a>
     </p>
+
+    <p>📦 Material:<br>
+      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">https://bibiopotoleando.github.io/estados-y-bebidas/material.html</a>
+    </p>
     
-  </div>
-</section>
-
-<div class="footer">
-  🏅 Gracias por formar parte y construir cada día el rincón opotoleante ✨
-</div>
-
-</main>
-</body>
-</html>
-"""
-
-import re
-# The requested URL to replace with
-insignias_url = "https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html"
-
-# A regex to catch the old URL, even with slight variations if any exist
-old_url_pattern = r"https://bibiopotoleando\.github\.io/(insignias-visual|guia-insignias)/guia_insignias\.html"
-
-new_html_content = re.sub(old_url_pattern, insignias_url, html_content)
-
-# Add the Discord link block to the "Guías relacionadas" section if it's not already there
-discord_link_block = """
     <p>👾 Discord:<br>
       <a href="https://bibiopotoleando.github.io/discord/index.html">
         https://bibiopotoleando.github.io/discord/index.html
       </a>
-    </p>"""
-
-if "👾 Discord" not in new_html_content and '<div class="links">' in new_html_content:
-    new_html_content = new_html_content.replace('</div>\n</section>', f'{discord_link_block}\n  </div>\n</section>')
-
-with open('GITHUB_INSIGNIAS_LINKS_UPDATED.html', 'w', encoding='utf-8') as f:
-    f.write(new_html_content)
-
-print("[file-tag: GITHUB_INSIGNIAS_LINKS_UPDATED.html]")    .subtitle {
-      text-align: center;
-      color: #7a6250;
-      margin-bottom: 32px;
-      font-size: 18px;
-    }
-
-    section {
-      margin-bottom: 34px;
-    }
-
-    .card {
-      background: rgba(255,255,255,.78);
-      border-radius: 20px;
-      padding: 20px;
-      margin: 16px 0;
-      box-shadow: 0 4px 14px rgba(0,0,0,.05);
-    }
-
-    code {
-      background: #efe2d2;
-      padding: 3px 7px;
-      border-radius: 8px;
-      font-weight: 700;
-    }
-
-    ul {
-      padding-left: 24px;
-    }
-
-    .important {
-      border-left: 5px solid #7da67d;
-      padding-left: 16px;
-      background: rgba(235, 245, 235, 0.6);
-    }
-
-    .links {
-      background: rgba(120,160,255,0.08);
-      border: 2px solid rgba(120,160,255,0.4);
-      border-radius: 14px;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    .links p {
-      margin-bottom: 14px;
-    }
-
-    .links a {
-      color: #5c7cff;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #7a6250;
-    }
-  </style>
-</head>
-
-<body>
-<main>
-
-<h1>🏅 Guía de Insignias</h1>
-<div class="subtitle">
-  Colecciona logros interactivos participando en el canal, estudiando, haciendo ejercicio y expandiendo tu propio bosque virtual ✨
-</div>
-
-<section>
-  <h2>✨ ¿Qué son las insignias?</h2>
-
-  <div class="card">
-    <p>
-      Las insignias son logros coleccionables exclusivos de nuestra comunidad. Se calculan y desbloquean de forma automática en segundo plano cuando alcanzas ciertos hitos en tus estadísticas.
     </p>
-
-    <p>
-      Cada medalla representa tu constancia y dedicación en las diferentes dinámicas del directo. ¡Una forma preciosa de registrar tu evolución!
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>🎮 ¿Cómo se consiguen?</h2>
-
-  <div class="card">
-    <ul>
-      <li><strong>📺 Streams:</strong> Por acumular asistencia acompañándonos en distintos directos.</li>
-      <li><strong>📚 Estudio:</strong> Por acumular horas totales de enfoque y productividad en las sesiones.</li>
-      <li><strong>💪 Ejercicio:</strong> Por registrar tus días de actividad física y autocuidado.</li>
-      <li><strong>🎮 Minijuegos:</strong> Por acertar respuestas correctas en las trivias de los descansos.</li>
-      <li><strong>🌳 Bosque:</strong> Por ampliar tu inventario plantando nuevas especies de árboles.</li>
-      <li><strong>🫶 Apoyo:</strong> Por utilizar comandos de comunidad activos o quedarte estudiando de fondo.</li>
-      <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias que tengas.</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <h2>🏅 Estatus y Prestigio</h2>
-
-  <div class="card important">
-    <p>
-      Las insignias no otorgan monedas ni premios físicos; actúan como un <strong>sistema de coleccionismo puro y estatus visual</strong>. Al desbloquear logros, subes posiciones en el escalafón de la comunidad y puedes lucir tu nivel de avance frente al resto del chat.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>💬 Comandos de insignias</h2>
-
-  <div class="card">
-    <ul>
-      <li><code>!insignias</code> → Muestra las categorías que existen y cómo consultar sus metas detalladas.</li>
-      <li><code>!misinsignias</code> → Consulta tu recuento y porcentaje de progreso actual en directo.</li>
-      <li><code>!infoinsignias</code> → Envía un resumen básico de esta guía en el chat para ayudar a nuevos usuarios.</li>
-      <li><code>!rankinginsignias</code> → Despliega el Top 5 de los mayores coleccionistas del canal.</li>
-      <li><code>!insigniasvisual</code> → Actualiza y compila tu vitrina web personalizada para ver tus medallas con enlace.</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <h2>📖 Álbum visual web</h2>
-
-  <div class="card">
-    <p>
-      El álbum visual funciona en sincronía con tu perfil de espectador: las medallas que ya te has ganado brillarán a todo color, mientras que los desafíos que te faltan se mostrarán bloqueados en escala de grises.
-    </p>
-
-    <p>
-      Al ejecutar el comando <code>!insigniasvisual</code> o adquirirlo en la tienda, el bot procesará tu página web para que puedas consultar tu colección cómodamente desde tu propio enlace de GitHub.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>🌟 Categoría General</h2>
-
-  <div class="card">
-    <p>
-      Las insignias generales premian el equilibrio. No miden una sola actividad, sino el total de medallas individuales que has desbloqueado en las categorías de estudio, minijuegos, streams y ejercicio.
-    </p>
-
-    <p>
-      Cuanto más polivalente y participativo seas en el canal en general, más rápido avanzarás hacia las medallas legendarias.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>🔗 Guías relacionadas</h2>
-
-  <div class="links">
-
-    <p>🌳 Bosque virtual:<br>
-      <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">
-        https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html
-      </a>
-    </p>
-
-    <p>📝 Tareas:<br>
-      <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">
-        https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html
-      </a>
-    </p>
-
-    <p>🎁 Canjeos:<br>
-      <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">
-        https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html
-      </a>
-    </p>
-
-    <p>📌 Estados:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/estados.html
-      </a>
-    </p>
-
-    <p>☕ Bebidas:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html
-      </a>
-    </p>
-
-    <p>🎯 Retos:<br>
-      <a href="https://bibiopotoleando.github.io/retos/retos.html">
-        https://bibiopotoleando.github.io/retos/retos.html
-      </a>
-    </p>
-
-    <p>🎮 Minijuego:<br>
-      <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">
-        https://bibiopotoleando.github.io/minijuego-guia/index.html
-      </a>
-    </p>
-
-    <p>📦 Material:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/material.html
-      </a>
-    </p>
-
-  <p>🏅 Insignias:<br>
-      <a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html">
-        https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html
-      </a>
-    </p>
-    
   </div>
 </section>
 
