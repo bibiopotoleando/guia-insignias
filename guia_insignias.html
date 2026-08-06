@@ -1,475 +1,888 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Insignias</title>
+<meta charset="UTF-8">
+<title>Álbum de insignias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 32px;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f5efe6;
-      color: #4b392c;
-      line-height: 1.6;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 
-    main {
-      max-width: 950px;
-      margin: 0 auto;
-      background: rgba(255,255,255,.72);
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 8px 28px rgba(0,0,0,.08);
-    }
+<style>
+:root {
+  --fondo: #f7efe3;
+  --papel: #fffaf0;
+  --tinta: #4f4035;
+  --suave: #9d806b;
+  --verde: #9fbd8c;
+  --verde-oscuro: #6f8f5f;
+  --rosa: #e7b7a8;
+  --amarillo: #f5d58b;
+  --sombra: rgba(93, 68, 43, 0.16);
+}
 
-    h1, h2, h3 {
-      color: #3d2d22;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 42px;
-      margin-top: 0;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 35%),
+    linear-gradient(135deg, #f8ead7, #eef3df);
+  color: var(--tinta);
+  font-family: "Nunito", sans-serif;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #7a6250;
-      margin-bottom: 32px;
-      font-size: 18px;
-    }
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 18px 54px;
+}
 
-    section {
-      margin-bottom: 34px;
-    }
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .card {
-      background: rgba(255,255,255,.78);
-      border-radius: 20px;
-      padding: 20px;
-      margin: 16px 0;
-      box-shadow: 0 4px 14px rgba(0,0,0,.05);
-    }
+.header h1 {
+  margin: 0;
+  font-family: "Kalam", cursive;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  color: var(--verde-oscuro);
+}
 
-    code {
-      background: #efe2d2;
-      padding: 3px 7px;
-      border-radius: 8px;
-      font-weight: 700;
-    }
+.header p {
+  margin: 6px 0 0;
+  color: var(--suave);
+  font-size: 1.05rem;
+}
 
-    ul {
-      padding-left: 24px;
-    }
+.album {
+  position: relative;
+  background: var(--papel);
+  border-radius: 34px;
+  padding: 30px;
+  box-shadow: 0 20px 50px var(--sombra);
+  border: 2px solid rgba(255,255,255,0.75);
+}
 
-    .important {
-      border-left: 5px solid #7da67d;
-      padding-left: 16px;
-      background: rgba(235, 245, 235, 0.6);
-    }
+.album::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 2px dashed rgba(159,189,140,0.45);
+  border-radius: 26px;
+  pointer-events: none;
+}
 
-    .streak {
-      border-left: 5px solid #e39b63;
-      padding-left: 16px;
-      background: rgba(255, 239, 220, 0.65);
-    }
+.sticker {
+  position: absolute;
+  z-index: 2;
+  font-size: 2rem;
+  filter: drop-shadow(0 5px 8px rgba(93,68,43,0.15));
+}
 
-    .links {
-      background: rgba(120,160,255,0.08);
-      border: 2px solid rgba(120,160,255,0.4);
-      border-radius: 14px;
-      padding: 15px;
-      margin-top: 20px;
-    }
+.sticker.one {
+  top: -18px;
+  left: 28px;
+}
 
-    .links p {
-      margin-bottom: 14px;
-    }
+.sticker.two {
+  right: 34px;
+  top: -20px;
+}
 
-    .links a {
-      color: #5c7cff;
-      font-weight: 600;
-      word-break: break-word;
-    }
+.sticker.three {
+  bottom: -18px;
+  left: 50%;
+}
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #7a6250;
-    }
-  </style>
+.stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  min-width: 160px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 8px 18px rgba(93,68,43,0.08);
+  text-align: center;
+}
+
+.stat-number {
+  font-family: "Kalam", cursive;
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--suave);
+  font-size: 0.9rem;
+}
+
+.category {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 34px;
+}
+
+.category-title {
+  font-family: "Kalam", cursive;
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.badge {
+  min-height: 260px;
+  padding: 14px 12px 16px;
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 32px,
+      rgba(159,189,140,0.18) 33px
+    );
+  box-shadow: 0 10px 24px rgba(93,68,43,0.09);
+  border: 1px solid rgba(111,143,95,0.18);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.badge.locked {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.badge-img {
+  width: 165px;
+  height: 165px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 8px 12px rgba(93,68,43,0.14));
+}
+
+.badge-name {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--tinta);
+  line-height: 1.15;
+}
+
+.badge-meta {
+  margin-top: 6px;
+  font-family: "Kalam", cursive;
+  color: var(--suave);
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.badge.locked .badge-name::after {
+  content: " 🔒";
+}
+
+.footer-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  text-align: center;
+  font-family: "Kalam", cursive;
+  font-size: 1.2rem;
+  color: var(--suave);
+}
+
+@media (max-width: 680px) {
+  .album {
+    padding: 22px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .badge {
+    min-height: 220px;
+  }
+
+  .badge-img {
+    width: 130px;
+    height: 130px;
+  }
+}
+</style>
 </head>
 
 <body>
-<main>
-
-<h1>🏅 Guía de Insignias</h1>
-
-<div class="subtitle">
-  Colecciona logros participando en el canal, estudiando, manteniendo tus rachas y formando parte de la comunidad ✨
-</div>
-
-
-<section>
-  <h2>✨ ¿Qué son las insignias?</h2>
-
-  <div class="card">
-    <p>
-      Las insignias son logros coleccionables exclusivos de nuestra comunidad.
-      Se calculan y desbloquean automáticamente cuando alcanzas determinados
-      hitos dentro de las diferentes dinámicas del canal.
-    </p>
-
-    <p>
-      Cada medalla representa un pequeño pedacito de tu recorrido:
-      directos compartidos, horas de estudio, árboles, minijuegos,
-      ejercicio, rachas y otras formas de participar.
-    </p>
-
-    <p>
-      Algunas llegan rápido. Otras requieren una cantidad de constancia
-      ligeramente preocupante. 😌
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>🎮 ¿Cómo se consiguen?</h2>
-
-  <div class="card">
-    <ul>
-      <li>
-        <strong>📺 Streams:</strong>
-        Por acumular asistencia acompañándonos en distintos directos.
-      </li>
-
-      <li>
-        <strong>🔥 Rachas:</strong>
-        Por mantener una racha de directos consecutivos vistos y compartirla
-        en el chat de Twitch.
-      </li>
-
-      <li>
-        <strong>📚 Estudio:</strong>
-        Por acumular horas totales de enfoque y productividad en las sesiones.
-      </li>
-
-      <li>
-        <strong>💪 Ejercicio:</strong>
-        Por registrar tus días de actividad física y autocuidado.
-      </li>
-
-      <li>
-        <strong>🎮 Minijuegos:</strong>
-        Por acertar respuestas correctas en las trivias y juegos de los descansos.
-      </li>
-
-      <li>
-        <strong>🌳 Bosque:</strong>
-        Por ampliar tu colección y conseguir árboles dentro del bosque virtual.
-      </li>
-
-      <li>
-        <strong>🫶 Apoyo:</strong>
-        Por participar en determinadas dinámicas de apoyo y comunidad.
-      </li>
-
-      <li>
-        <strong>✨ General:</strong>
-        Logros maestros que avanzan según la cantidad total de insignias
-        diferentes que hayas conseguido.
-      </li>
-    </ul>
-  </div>
-</section>
-
-
-<section>
-  <h2>🔥 Rachas de visualización</h2>
-
-  <div class="card streak">
-    <p>
-      Las insignias de racha premian haber estado presente en varios
-      directos consecutivos.
-    </p>
-
-    <p>
-      <strong>Importante:</strong>
-      para que el sistema pueda registrar tu racha, tienes que
-      <strong>compartirla en el chat de Twitch</strong> cuando aparezca
-      la opción.
-    </p>
-
-    <p>
-      Al compartirla, el bot comprobará automáticamente cuántos directos
-      seguidos llevas y desbloqueará todas las insignias de racha que te
-      correspondan y que todavía no tengas.
-    </p>
-
-    <p>
-      Empieza siendo una visita casual y puede terminar en
-      <em>“casi paga alquiler”</em>. Tú sabrás hasta dónde quieres llegar. 🏠
-    </p>
-
-    <p>
-      Puedes consultar las metas con:
-      <code>!insigniasrachas</code>
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>🏅 Estatus y Prestigio</h2>
-
-  <div class="card important">
-    <p>
-      Las insignias no otorgan monedas ni premios físicos; funcionan como un
-      <strong>sistema de coleccionismo, progreso y estatus visual</strong>.
-    </p>
-
-    <p>
-      Al desbloquear logros aumentas tu colección, avanzas en las insignias
-      generales y puedes aparecer entre los mayores coleccionistas del canal.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>💬 Comandos de insignias</h2>
-
-  <div class="card">
-    <ul>
-
-      <li>
-        <code>!insignias</code>
-        → Muestra todas las categorías disponibles.
-      </li>
-
-      <li>
-        <code>!insigniasstreams</code>
-        → Consulta las metas de asistencia a streams.
-      </li>
-
-      <li>
-        <code>!insigniasrachas</code>
-        → Consulta las metas de rachas de visualización.
-      </li>
-
-      <li>
-        <code>!insigniasestudio</code>
-        → Consulta las metas de estudio.
-      </li>
-
-      <li>
-        <code>!insigniasapoyo</code>
-        → Consulta las metas de apoyo.
-      </li>
-
-      <li>
-        <code>!insigniasejercicio</code>
-        → Consulta las metas de ejercicio.
-      </li>
-
-      <li>
-        <code>!insigniasminijuegos</code>
-        → Consulta las metas de minijuegos.
-      </li>
-
-      <li>
-        <code>!insigniasbosque</code>
-        → Consulta las metas del bosque virtual.
-      </li>
-
-      <li>
-        <code>!insigniasgeneral</code>
-        → Consulta las metas generales.
-      </li>
-
-      <li>
-        <code>!misinsignias</code>
-        → Consulta cuántas insignias has desbloqueado y tu progreso
-        por categorías.
-      </li>
-
-      <li>
-        <code>!infoinsignias</code>
-        → Envía un resumen básico del sistema en el chat.
-      </li>
-
-      <li>
-        <code>!rankinginsignias</code>
-        → Muestra el Top 5 de mayores coleccionistas de insignias del canal.
-      </li>
-
-      <li>
-        <code>Canjeo Ver mis Insignias</code>
-        → Actualiza tu álbum visual personalizado para consultar todas
-        tus medallas.
-      </li>
-
-    </ul>
-  </div>
-</section>
-
-
-<section>
-  <h2>📖 Álbum visual web</h2>
-
-  <div class="card">
-    <p>
-      Cada espectador puede tener su propio álbum visual de insignias.
-    </p>
-
-    <p>
-      Las medallas que ya hayas conseguido aparecerán a todo color,
-      mientras que aquellas cuyos requisitos todavía no hayas alcanzado
-      permanecerán bloqueadas y en escala de grises.
-    </p>
-
-    <p>
-      Al ejecutar el canjeo <code>Ver mis Insignias</code>,
-      el bot vuelve a generar tu página para que puedas consultar
-      cómodamente tu colección actualizada.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>🏆 Ranking de coleccionistas</h2>
-
-  <div class="card">
-    <p>
-      Todas las insignias diferentes que desbloquees cuentan para tu
-      colección total.
-    </p>
-
-    <p>
-      Con <code>!rankinginsignias</code> puedes consultar el Top 5
-      de usuarios con más insignias desbloqueadas.
-    </p>
-
-    <p>
-      No importa de qué categoría procedan:
-      Streams, Rachas, Estudio, Ejercicio, Minijuegos, Bosque,
-      Apoyo y General forman parte de tu colección.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>🌟 Categoría General</h2>
-
-  <div class="card">
-    <p>
-      Las insignias generales no miden una única actividad.
-      Se desbloquean según la cantidad total de
-      <strong>insignias diferentes</strong> que hayas conseguido.
-    </p>
-
-    <p>
-      Para avanzar cuentan tus logros de Streams, Rachas, Estudio,
-      Ejercicio, Minijuegos, Bosque y Apoyo.
-    </p>
-
-    <p>
-      Así que no hace falta obsesionarse con una sola categoría:
-      participar un poquito en todo también tiene premio. ✨
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>🔗 Guías relacionadas</h2>
-
-  <div class="links">
-
-    <p>
-      🌳 Bosque virtual:<br>
-      <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">
-        https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html
-      </a>
-    </p>
-
-    <p>
-      📝 Tareas:<br>
-      <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">
-        https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html
-      </a>
-    </p>
-
-    <p>
-      🎁 Canjeos:<br>
-      <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">
-        https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html
-      </a>
-    </p>
-
-    <p>
-      📌 Estados:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/estados.html
-      </a>
-    </p>
-
-    <p>
-      ☕ Bebidas:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html
-      </a>
-    </p>
-
-    <p>
-      🎯 Retos:<br>
-      <a href="https://bibiopotoleando.github.io/retos/retos.html">
-        https://bibiopotoleando.github.io/retos/retos.html
-      </a>
-    </p>
-
-    <p>
-      🎮 Minijuego:<br>
-      <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">
-        https://bibiopotoleando.github.io/minijuego-guia/index.html
-      </a>
-    </p>
-
-    <p>
-      🏅 Insignias:<br>
-      <a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html">
-        https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html
-      </a>
-    </p>
-
-    <p>
-      📦 Material:<br>
-      <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">
-        https://bibiopotoleando.github.io/estados-y-bebidas/material.html
-      </a>
-    </p>
-
-    <p>
-      👾 Discord:<br>
-      <a href="https://bibiopotoleando.github.io/discord/index.html">
-        https://bibiopotoleando.github.io/discord/index.html
-      </a>
-    </p>
-
-  </div>
-</section>
-
-
-<div class="footer">
-  🏅 Gracias por formar parte y construir cada día el rincón opotoleante ✨
-</div>
-
+<main class="wrapper">
+  <header class="header">
+    <h1>🏅 Álbum de insignias</h1>
+    <p>Logros desbloqueados por opozzoli</p>
+  </header>
+
+  <section class="album">
+    <div class="sticker one">✨</div>
+    <div class="sticker two">🌿</div>
+    <div class="sticker three">🏆</div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">27</div>
+        <div class="stat-label">desbloqueadas</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">123</div>
+        <div class="stat-label">totales</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">22%</div>
+        <div class="stat-label">completado</div>
+      </div>
+    </div>
+
+    <section class='category'><h2 class='category-title'>📺 Streams</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/streams_presente.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presente ✨</div>
+                            <div class='badge-meta'>1 directos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/streams_primera_semana.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primera semana 🌱</div>
+                            <div class='badge-meta'>3 directos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/streams_habitual_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Habitual del canal 🌙</div>
+                            <div class='badge-meta'>7 directos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/streams_se_queda_por_aqui.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Se queda por aquí ☕</div>
+                            <div class='badge-meta'>15 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_compania_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Compañía constante 📚</div>
+                            <div class='badge-meta'>30 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_parte_del_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Parte del estudio 🌿</div>
+                            <div class='badge-meta'>50 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_presencia_bonita.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presencia bonita 🧸</div>
+                            <div class='badge-meta'>75 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_raiz_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Raíz del bosque 🌳</div>
+                            <div class='badge-meta'>100 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_guardian_directo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del directo 🕯️</div>
+                            <div class='badge-meta'>150 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_alma_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma del canal 💚</div>
+                            <div class='badge-meta'>200 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_leyenda_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda opotoleante 🏆</div>
+                            <div class='badge-meta'>300 directos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/streams_bosque_eterno.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del bosque eterno 🌌</div>
+                            <div class='badge-meta'>500 directos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>💪 Ejercicio</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/ejercicio_primer_paso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer paso 🌱</div>
+                            <div class='badge-meta'>1 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_calentando_motores.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Calentando motores 👟</div>
+                            <div class='badge-meta'>3 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_semana_activa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Semana activa 💪</div>
+                            <div class='badge-meta'>7 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_constancia_bonita.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia bonita 🌿</div>
+                            <div class='badge-meta'>15 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_habito_desbloqueado.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Hábito desbloqueado 🏅</div>
+                            <div class='badge-meta'>30 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_energia_estable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Energía estable ⚡</div>
+                            <div class='badge-meta'>50 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_ritmo_firme.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo firme 🔥</div>
+                            <div class='badge-meta'>75 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_leyenda_fitness.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda fitness 🏆</div>
+                            <div class='badge-meta'>100 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_cuerpo_en_movimiento.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cuerpo en movimiento 🌊</div>
+                            <div class='badge-meta'>150 días</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/ejercicio_energia_imparable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Energía imparable 🌟</div>
+                            <div class='badge-meta'>200 días</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>📚 Estudio</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_primer_pomo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer pomo 🍅</div>
+                            <div class='badge-meta'>1 horas</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_calentando_motores.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Calentando motores 👟</div>
+                            <div class='badge-meta'>10 horas</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_arranque_estudioso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Arranque estudioso 📖</div>
+                            <div class='badge-meta'>25 horas</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_ritmo_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo inicial 📝</div>
+                            <div class='badge-meta'>50 horas</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_primer_bloque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer bloque 📚</div>
+                            <div class='badge-meta'>80 horas</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/estudio_cogiendo_habito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cogiendo hábito 🌱</div>
+                            <div class='badge-meta'>120 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_flujo_suave.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Flujo suave 🌊</div>
+                            <div class='badge-meta'>170 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_constancia_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia inicial ✍️</div>
+                            <div class='badge-meta'>230 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_zona_de_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Zona de estudio 🧠</div>
+                            <div class='badge-meta'>300 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_rutina_activa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Rutina activa ⏳</div>
+                            <div class='badge-meta'>400 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_en_marcha.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>En marcha 🌿</div>
+                            <div class='badge-meta'>520 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_ritmo_estable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo estable 🔥</div>
+                            <div class='badge-meta'>660 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_casi_habito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Casi hábito 🌼</div>
+                            <div class='badge-meta'>820 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_constancia_real.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia real ☕</div>
+                            <div class='badge-meta'>1000 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_ritmo_serio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ritmo serio 📘</div>
+                            <div class='badge-meta'>1200 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_firme.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente firme 🧠✨</div>
+                            <div class='badge-meta'>1400 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_entrenada.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente entrenada 🧩</div>
+                            <div class='badge-meta'>1600 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_disciplina_real.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Disciplina real ⛩️</div>
+                            <div class='badge-meta'>1800 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_estudio_profundo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Estudio profundo 📚✨</div>
+                            <div class='badge-meta'>2000 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_foco_inquebrantable.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Foco inquebrantable 🎯</div>
+                            <div class='badge-meta'>2250 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_maestria_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Maestría constante 🏅</div>
+                            <div class='badge-meta'>2500 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_mente_maestra.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente maestra 🧿</div>
+                            <div class='badge-meta'>2700 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_leyenda_estudio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del estudio 🏆</div>
+                            <div class='badge-meta'>2850 horas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/estudio_consigue_plaza.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>La plaza es mía 👑</div>
+                            <div class='badge-meta'>3000 horas</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>🎮 Minijuegos</h2><div class='grid'>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_primer_acierto.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer acierto 🎯</div>
+                            <div class='badge-meta'>1 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_ojo_despierto.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ojo despierto 👀</div>
+                            <div class='badge-meta'>3 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_ojo_fino.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ojo fino 🔎</div>
+                            <div class='badge-meta'>10 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_cerebrito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cerebrito 🧠</div>
+                            <div class='badge-meta'>30 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_maestria_mini.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Maestría mini 🎮</div>
+                            <div class='badge-meta'>75 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_descanso_brillante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Descanso brillante ✨</div>
+                            <div class='badge-meta'>150 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_leyenda_descanso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del descanso 🏆</div>
+                            <div class='badge-meta'>300 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_mente_rapida.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mente rápida ⚡</div>
+                            <div class='badge-meta'>500 aciertos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/minijuegos_rey_minijuego.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Rey/Reina del minijuego 👑</div>
+                            <div class='badge-meta'>1000 aciertos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>🌳 Bosque</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_primer_arbol.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer árbol 🌱</div>
+                            <div class='badge-meta'>1 árboles</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_pequeno_jardin.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Pequeño jardín 🌿</div>
+                            <div class='badge-meta'>20 árboles</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/bosque_coleccionista_inicial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Coleccionista inicial 📗</div>
+                            <div class='badge-meta'>50 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_bosquecito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosquecito 🌳</div>
+                            <div class='badge-meta'>85 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_guardian_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del bosque 🍃</div>
+                            <div class='badge-meta'>125 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_album_frondoso.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Álbum frondoso 🌲</div>
+                            <div class='badge-meta'>200 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_raices_fuertes.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Raíces fuertes 🪵</div>
+                            <div class='badge-meta'>275 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_bosque_legendario.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosque legendario 🏆</div>
+                            <div class='badge-meta'>500 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_ecosistema_vivo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ecosistema vivo 🦋</div>
+                            <div class='badge-meta'>750 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_bosque_magico.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Bosque mágico ✨</div>
+                            <div class='badge-meta'>1000 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_refugio_natural.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Refugio natural 🏕️</div>
+                            <div class='badge-meta'>1500 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_corazon_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Corazón del bosque 💚</div>
+                            <div class='badge-meta'>2000 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_reino_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Reino del bosque 👑</div>
+                            <div class='badge-meta'>3000 árboles</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/bosque_espiritu_del_bosque.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del bosque 🌌</div>
+                            <div class='badge-meta'>5000 árboles</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>🫶 Apoyo</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/apoyo_primer_apoyo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primer apoyo 💛</div>
+                            <div class='badge-meta'>1 apoyos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_apoyo_bonito.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Apoyo bonito 🌼</div>
+                            <div class='badge-meta'>5 apoyos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_apoyo_constante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Apoyo constante ☕</div>
+                            <div class='badge-meta'>10 apoyos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_compania_silenciosa.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Compañía silenciosa 🌙</div>
+                            <div class='badge-meta'>25 apoyos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_alma_de_fondo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma de fondo 🕯️</div>
+                            <div class='badge-meta'>50 apoyos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/apoyo_guardian_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del rincón 💚</div>
+                            <div class='badge-meta'>100 apoyos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>✨ General</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/general_primeros_pasos.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primeros pasos ✨</div>
+                            <div class='badge-meta'>3 insignias</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/general_constancia_suave.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Constancia suave 🌙</div>
+                            <div class='badge-meta'>6 insignias</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/general_habitante_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Habitante del canal ☕</div>
+                            <div class='badge-meta'>10 insignias</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/general_alma_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma opotoleante 💚</div>
+                            <div class='badge-meta'>15 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_coleccionista_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Coleccionista del rincón 🌿</div>
+                            <div class='badge-meta'>25 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_presencia_total.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Presencia total 🕯️</div>
+                            <div class='badge-meta'>35 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_leyenda_del_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del rincón 🏆</div>
+                            <div class='badge-meta'>45 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_icono_opotoleante.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Icono opotoleante 👑</div>
+                            <div class='badge-meta'>55 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_rincon_es_suyo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>El rincón ya es suyo 🛋️</div>
+                            <div class='badge-meta'>65 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_espiritu_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Espíritu del canal 🌌</div>
+                            <div class='badge-meta'>75 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_coleccionista_legendario.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Coleccionista legendario 💎</div>
+                            <div class='badge-meta'>85 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_casi_todas.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Casi no queda ninguna 👀</div>
+                            <div class='badge-meta'>90 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_recta_final.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Recta final 🚀</div>
+                            <div class='badge-meta'>95 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_centenario.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>100 insignias 💯</div>
+                            <div class='badge-meta'>100 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_a_dos_del_pleno.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>A dos del pleno 😳</div>
+                            <div class='badge-meta'>105 insignias</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/general_album_completo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Álbum completado 🏅</div>
+                            <div class='badge-meta'>107 insignias</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>🔥 Rachas</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_segunda_ronda.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Segunda ronda 🔁</div>
+                            <div class='badge-meta'>2 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_aqui_seguimos.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Aquí seguimos 👀</div>
+                            <div class='badge-meta'>3 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_cuatro_y_contando.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Cuatro y contando 🔥</div>
+                            <div class='badge-meta'>4 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_no_se_pierde_una.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>No se pierde una ☕</div>
+                            <div class='badge-meta'>5 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_una_semanita.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Una semanita por aquí 🌱</div>
+                            <div class='badge-meta'>7 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_ya_es_costumbre.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ya es costumbre 🌿</div>
+                            <div class='badge-meta'>10 streams seguidos</div>
+                        </div>
+                        <div class='badge '>
+                            <img src='../imágenes/rachas_se_va_quedando.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Se va quedando 📚</div>
+                            <div class='badge-meta'>15 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_fichaje_fijo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Fichaje fijo 🧸</div>
+                            <div class='badge-meta'>20 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_esto_va_en_serio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Esto va en serio 👀</div>
+                            <div class='badge-meta'>25 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_parte_del_mobiliario.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Parte del mobiliario 🪑</div>
+                            <div class='badge-meta'>30 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_tiene_su_rincon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ya tiene su rincón 🕯️</div>
+                            <div class='badge-meta'>40 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_tiene_su_sitio.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Tiene su sitio 🏡</div>
+                            <div class='badge-meta'>50 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_llave_del_canal.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Casi tiene llave 🔑</div>
+                            <div class='badge-meta'>60 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_casi_paga_alquiler.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Casi paga alquiler 🏠</div>
+                            <div class='badge-meta'>75 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_cien_y_sin_faltar.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>100 y sin faltar 💯</div>
+                            <div class='badge-meta'>100 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_residente_oficial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Residente oficial 🌿</div>
+                            <div class='badge-meta'>125 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_guardian_del_directo.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Guardián del directo 🛡️</div>
+                            <div class='badge-meta'>150 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_imposible_echarle.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Imposible echarle 😂</div>
+                            <div class='badge-meta'>200 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_alma_de_la_racha.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Alma de la racha 💚</div>
+                            <div class='badge-meta'>250 streams seguidos</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/rachas_leyenda_de_la_racha.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda de la racha 🏆</div>
+                            <div class='badge-meta'>300 streams seguidos</div>
+                        </div></div></section><section class='category'><h2 class='category-title'>📝 Tareas</h2><div class='grid'>
+                        <div class='badge '>
+                            <img src='../imágenes/tareas_primera_tachada.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Primera tachada 📝</div>
+                            <div class='badge-meta'>1 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_ya_arrancamos.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Ya arrancamos ✏️</div>
+                            <div class='badge-meta'>10 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_lista_en_marcha.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Lista en marcha ✅</div>
+                            <div class='badge-meta'>25 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_tachadora_oficial.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Tachadora oficial 📋</div>
+                            <div class='badge-meta'>50 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_cien_fuera.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>100 fuera 💯</div>
+                            <div class='badge-meta'>100 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_peligro_para_las_listas.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Peligro para las listas 🔥</div>
+                            <div class='badge-meta'>200 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_no_deja_una_viva.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>No deja una viva 🖊️</div>
+                            <div class='badge-meta'>350 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_medio_millar.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Medio millar tachado 📚</div>
+                            <div class='badge-meta'>500 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_maquina_de_checks.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Máquina de checks ⚡</div>
+                            <div class='badge-meta'>750 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_mil_y_contando.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Mil y contando 🌟</div>
+                            <div class='badge-meta'>1000 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_verdugo_del_postit.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Verdugo del post-it 👑</div>
+                            <div class='badge-meta'>1500 tareas</div>
+                        </div>
+                        <div class='badge locked'>
+                            <img src='../imágenes/tareas_leyenda_del_tachon.png' class='badge-img' onerror="this.src='../imágenes/default.png'">
+                            <div class='badge-name'>Leyenda del tachón 🏆</div>
+                            <div class='badge-meta'>2000 tareas</div>
+                        </div></div></section>
+
+    <div class="footer-note">
+      ✨ álbum generado con mucho mimo ✨
+    </div>
+  </section>
 </main>
 </body>
 </html>
-"""
