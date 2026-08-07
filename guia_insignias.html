@@ -4,168 +4,596 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guía de Insignias</title>
+
   <style>
-    body { margin:0; padding:32px; font-family:"Segoe UI",Arial,sans-serif; background:#f5efe6; color:#4b392c; line-height:1.6; }
-    main { max-width:950px; margin:0 auto; background:rgba(255,255,255,.72); border-radius:28px; padding:32px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2,h3 { color:#3d2d22; }
-    h1 { text-align:center; font-size:42px; margin-top:0; }
-    .subtitle { text-align:center; color:#7a6250; margin-bottom:32px; font-size:18px; }
-    section { margin-bottom:34px; }
-    .card { background:rgba(255,255,255,.78); border-radius:20px; padding:20px; margin:16px 0; box-shadow:0 4px 14px rgba(0,0,0,.05); }
-    code { background:#efe2d2; padding:3px 7px; border-radius:8px; font-weight:700; }
-    ul { padding-left:24px; }
-    .important { border-left:5px solid #7da67d; padding-left:16px; background:rgba(235,245,235,.6); }
-    .streak { border-left:5px solid #e39b63; padding-left:16px; background:rgba(255,239,220,.65); }
-    .tasks { border-left:5px solid #b58a62; padding-left:16px; background:rgba(245,235,222,.72); }
-    .milestones { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:10px; margin-top:16px; }
-    .milestone { background:#fbf7f1; border-radius:14px; padding:12px 14px; border:1px solid #eadccb; }
-    .milestone strong { color:#3d2d22; }
-    .links { background:rgba(120,160,255,.08); border:2px solid rgba(120,160,255,.4); border-radius:14px; padding:15px; margin-top:20px; }
-    .links p { margin-bottom:14px; }
-    .links a { color:#5c7cff; font-weight:600; word-break:break-word; }
-    .footer { text-align:center; margin-top:40px; color:#7a6250; }
-    @media (max-width:650px) { body{padding:14px;} main{padding:20px;border-radius:20px;} h1{font-size:34px;} }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5efe6;
+      color: #4b392c;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 0 auto;
+      background: rgba(255,255,255,.72);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.08);
+    }
+
+    h1, h2, h3 {
+      color: #3d2d22;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      margin-top: 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #7a6250;
+      margin-bottom: 32px;
+      font-size: 18px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.78);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 16px 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+
+    code {
+      background: #efe2d2;
+      padding: 3px 7px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    .important {
+      border-left: 5px solid #7da67d;
+      padding-left: 16px;
+      background: rgba(235,245,235,.6);
+    }
+
+    .streak {
+      border-left: 5px solid #e39b63;
+      padding-left: 16px;
+      background: rgba(255,239,220,.65);
+    }
+
+    .tasks {
+      border-left: 5px solid #b58a62;
+      padding-left: 16px;
+      background: rgba(245,235,222,.72);
+    }
+
+    .minigames {
+      border-left: 5px solid #8b7cc7;
+      padding-left: 16px;
+      background: rgba(239,235,250,.72);
+    }
+
+    .challenges {
+      border-left: 5px solid #d28a59;
+      padding-left: 16px;
+      background: rgba(255,240,225,.72);
+    }
+
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .milestone {
+      background: #fbf7f1;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid #eadccb;
+    }
+
+    .milestone strong {
+      color: #3d2d22;
+    }
+
+    .links {
+      background: rgba(120,160,255,.08);
+      border: 2px solid rgba(120,160,255,.4);
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .links p {
+      margin-bottom: 14px;
+    }
+
+    .links a {
+      color: #5c7cff;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #7a6250;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 14px;
+      }
+
+      main {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
   </style>
 </head>
+
 <body>
 <main>
-<h1>🏅 Guía de Insignias</h1>
-<div class="subtitle">Colecciona logros participando en el canal, estudiando, completando tareas, manteniendo tus rachas y formando parte de la comunidad ✨</div>
 
-<section>
-  <h2>✨ ¿Qué son las insignias?</h2>
-  <div class="card">
-    <p>Las insignias son logros coleccionables exclusivos de nuestra comunidad. Se calculan y desbloquean automáticamente cuando alcanzas determinados hitos dentro de las diferentes dinámicas del canal.</p>
-    <p>Cada medalla representa un pequeño pedacito de tu recorrido: directos compartidos, horas de estudio, tareas completadas, árboles, minijuegos, ejercicio, rachas y otras formas de participar.</p>
-    <p>Algunas llegan rápido. Otras requieren una cantidad de constancia ligeramente preocupante. 😌</p>
+  <h1>🏅 Guía de Insignias</h1>
+
+  <div class="subtitle">
+    Colecciona logros participando en el canal, estudiando, completando tareas y retos,
+    jugando, manteniendo tus rachas y formando parte de la comunidad ✨
   </div>
-</section>
 
-<section>
-  <h2>🎮 ¿Cómo se consiguen?</h2>
-  <div class="card">
-    <ul>
-      <li><strong>📺 Streams:</strong> Por acumular asistencia acompañándonos en distintos directos.</li>
-      <li><strong>🔥 Rachas:</strong> Por mantener una racha de directos consecutivos vistos y compartirla en el chat de Twitch.</li>
-      <li><strong>📚 Estudio:</strong> Por acumular horas totales de enfoque y productividad en las sesiones.</li>
-      <li><strong>📝 Tareas:</strong> Por completar tareas de tu lista usando el sistema de tareas del canal.</li>
-      <li><strong>💪 Ejercicio:</strong> Por registrar tus días de actividad física y autocuidado.</li>
-      <li><strong>🎮 Minijuegos:</strong> Por acertar respuestas correctas en las trivias y juegos de los descansos.</li>
-      <li><strong>🌳 Bosque:</strong> Por ampliar tu colección y conseguir árboles dentro del bosque virtual.</li>
-      <li><strong>🫶 Apoyo:</strong> Por participar en determinadas dinámicas de apoyo y comunidad.</li>
-      <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias diferentes que hayas conseguido.</li>
-    </ul>
-  </div>
-</section>
 
-<section>
-  <h2>📝 Insignias de tareas</h2>
-  <div class="card tasks">
-    <p>Cada vez que completas una tarea con <code>!hecha</code>, <code>!feito</code> o <code>!feita</code>, esa tarea suma para tu progreso acumulado. Las insignias se desbloquean automáticamente al alcanzar estas metas:</p>
-    <div class="milestones">
-      <div class="milestone">📝 <strong>Primera tachada</strong> · 1 tarea</div>
-      <div class="milestone">✏️ <strong>Ya arrancamos</strong> · 10 tareas</div>
-      <div class="milestone">✅ <strong>Lista en marcha</strong> · 25 tareas</div>
-      <div class="milestone">📋 <strong>Tachadora oficial</strong> · 50 tareas</div>
-      <div class="milestone">💯 <strong>100 fuera</strong> · 100 tareas</div>
-      <div class="milestone">🔥 <strong>Peligro para las listas</strong> · 200 tareas</div>
-      <div class="milestone">🖊️ <strong>No deja una viva</strong> · 350 tareas</div>
-      <div class="milestone">📚 <strong>Medio millar tachado</strong> · 500 tareas</div>
-      <div class="milestone">⚡ <strong>Máquina de checks</strong> · 750 tareas</div>
-      <div class="milestone">🌟 <strong>Mil y contando</strong> · 1.000 tareas</div>
-      <div class="milestone">👑 <strong>Verdugo del post-it</strong> · 1.500 tareas</div>
-      <div class="milestone">🏆 <strong>Leyenda del tachón</strong> · 2.000 tareas</div>
+  <section>
+    <h2>✨ ¿Qué son las insignias?</h2>
+
+    <div class="card">
+      <p>
+        Las insignias son logros coleccionables exclusivos de nuestra comunidad.
+        Se calculan y desbloquean automáticamente cuando alcanzas determinados hitos
+        dentro de las diferentes dinámicas del canal.
+      </p>
+
+      <p>
+        Cada medalla representa un pequeño pedacito de tu recorrido:
+        directos compartidos, horas de estudio, tareas completadas, retos superados,
+        árboles, XP de minijuegos, ejercicio, rachas y otras formas de participar.
+      </p>
+
+      <p>
+        Algunas llegan rápido. Otras requieren una cantidad de constancia
+        ligeramente preocupante. 😌
+      </p>
     </div>
-    <p>Puedes consultar las metas desde el chat con <code>!insigniastareas</code> o, en gallego, <code>!insigniastarefas</code>.</p>
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2>🔥 Rachas de visualización</h2>
-  <div class="card streak">
-    <p>Las insignias de racha premian haber estado presente en varios directos consecutivos.</p>
-    <p><strong>Importante:</strong> para que el sistema pueda registrar tu racha, tienes que <strong>compartirla en el chat de Twitch</strong> cuando aparezca la opción.</p>
-    <p>Al compartirla, el bot comprobará automáticamente cuántos directos seguidos llevas y desbloqueará todas las insignias de racha que te correspondan y que todavía no tengas.</p>
-    <p>Empieza siendo una visita casual y puede terminar en <em>“casi paga alquiler”</em>. Tú sabrás hasta dónde quieres llegar. 🏠</p>
-    <p>Puedes consultar las metas con: <code>!insigniasrachas</code></p>
-  </div>
-</section>
 
-<section>
-  <h2>🏅 Estatus y Prestigio</h2>
-  <div class="card important">
-    <p>Las insignias no otorgan monedas ni premios físicos; funcionan como un <strong>sistema de coleccionismo, progreso y estatus visual</strong>.</p>
-    <p>Al desbloquear logros aumentas tu colección, avanzas en las insignias generales y puedes aparecer entre los mayores coleccionistas del canal.</p>
-  </div>
-</section>
+  <section>
+    <h2>🎮 ¿Cómo se consiguen?</h2>
 
-<section>
-  <h2>💬 Comandos de insignias</h2>
-  <div class="card">
-    <ul>
-      <li><code>!insignias</code> → Muestra todas las categorías disponibles.</li>
-      <li><code>!insigniasstreams</code> → Consulta las metas de asistencia a streams.</li>
-      <li><code>!insigniasrachas</code> → Consulta las metas de rachas de visualización.</li>
-      <li><code>!insigniasestudio</code> → Consulta las metas de estudio.</li>
-      <li><code>!insigniastareas</code> → Consulta las metas de tareas completadas.</li>
-      <li><code>!insigniasapoyo</code> → Consulta las metas de apoyo.</li>
-      <li><code>!insigniasejercicio</code> → Consulta las metas de ejercicio.</li>
-      <li><code>!insigniasminijuegos</code> → Consulta las metas de minijuegos.</li>
-      <li><code>!insigniasbosque</code> → Consulta las metas del bosque virtual.</li>
-      <li><code>!insigniasgeneral</code> → Consulta las metas generales.</li>
-      <li><code>!misinsignias</code> → Consulta cuántas insignias has desbloqueado y tu progreso por categorías.</li>
-      <li><code>!infoinsignias</code> → Envía un resumen básico del sistema en el chat.</li>
-      <li><code>!rankinginsignias</code> → Muestra el Top 5 de mayores coleccionistas de insignias del canal.</li>
-      <li><code>Canjeo Ver mis Insignias</code> → Actualiza tu álbum visual personalizado para consultar todas tus medallas.</li>
-    </ul>
-  </div>
-</section>
+    <div class="card">
+      <ul>
+        <li><strong>📺 Streams:</strong> Por acumular asistencia acompañándonos en distintos directos.</li>
 
-<section>
-  <h2>📖 Álbum visual web</h2>
-  <div class="card">
-    <p>Cada espectador puede tener su propio álbum visual de insignias.</p>
-    <p>Las medallas que ya hayas conseguido aparecerán a todo color, mientras que aquellas cuyos requisitos todavía no hayas alcanzado permanecerán bloqueadas y en escala de grises.</p>
-    <p>Al ejecutar el canjeo <code>Ver mis Insignias</code>, el bot vuelve a generar tu página para que puedas consultar cómodamente tu colección actualizada.</p>
-    <p>La categoría <strong>📝 Tareas</strong> aparece también en el álbum junto al resto de categorías.</p>
-  </div>
-</section>
+        <li><strong>🔥 Rachas:</strong> Por mantener una racha de directos consecutivos vistos y compartirla en el chat de Twitch.</li>
 
-<section>
-  <h2>🏆 Ranking de coleccionistas</h2>
-  <div class="card">
-    <p>Todas las insignias diferentes que desbloquees cuentan para tu colección total.</p>
-    <p>Con <code>!rankinginsignias</code> puedes consultar el Top 5 de usuarios con más insignias desbloqueadas.</p>
-    <p>No importa de qué categoría procedan: Streams, Rachas, Estudio, Tareas, Ejercicio, Minijuegos, Bosque, Apoyo y General forman parte de tu colección.</p>
-  </div>
-</section>
+        <li><strong>📚 Estudio:</strong> Por acumular horas totales de enfoque y productividad en las sesiones.</li>
 
-<section>
-  <h2>🌟 Categoría General</h2>
-  <div class="card">
-    <p>Las insignias generales no miden una única actividad. Se desbloquean según la cantidad total de <strong>insignias diferentes</strong> que hayas conseguido.</p>
-    <p>Para avanzar cuentan tus logros de Streams, Rachas, Estudio, Tareas, Ejercicio, Minijuegos, Bosque y Apoyo.</p>
-    <p>Así que no hace falta obsesionarse con una sola categoría: participar un poquito en todo también tiene premio. ✨</p>
-  </div>
-</section>
+        <li><strong>📝 Tareas:</strong> Por completar tareas de tu lista usando el sistema de tareas del canal.</li>
 
-<section>
-  <h2>🔗 Guías relacionadas</h2>
-  <div class="links">
-    <p>🌳 Bosque virtual:<br><a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html</a></p>
-    <p>📝 Tareas:<br><a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html</a></p>
-    <p>🎁 Canjeos:<br><a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html</a></p>
-    <p>📌 Estados:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">https://bibiopotoleando.github.io/estados-y-bebidas/estados.html</a></p>
-    <p>☕ Bebidas:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html</a></p>
-    <p>🎯 Retos:<br><a href="https://bibiopotoleando.github.io/retos/retos.html">https://bibiopotoleando.github.io/retos/retos.html</a></p>
-    <p>🎮 Minijuego:<br><a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">https://bibiopotoleando.github.io/minijuego-guia/index.html</a></p>
-    <p>🏅 Insignias:<br><a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html">https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html</a></p>
-    <p>📦 Material:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">https://bibiopotoleando.github.io/estados-y-bebidas/material.html</a></p>
-    <p>👾 Discord:<br><a href="https://bibiopotoleando.github.io/discord/index.html">https://bibiopotoleando.github.io/discord/index.html</a></p>
-  </div>
-</section>
+        <li><strong>🎯 Retos:</strong> Por completar los retos personales de movimiento, descanso y autocuidado.</li>
 
-<div class="footer">🏅 Gracias por formar parte y construir cada día el rincón opotoleante ✨</div>
+        <li><strong>💪 Ejercicio:</strong> Por registrar tus días de actividad física y autocuidado.</li>
+
+        <li><strong>🎮 Minijuegos:</strong> Por acumular XP conseguida directamente al acertar respuestas en las trivias y juegos de los descansos.</li>
+
+        <li><strong>🌳 Bosque:</strong> Por ampliar tu colección y conseguir árboles dentro del bosque virtual.</li>
+
+        <li><strong>🫶 Apoyo:</strong> Por participar en determinadas dinámicas de apoyo y comunidad.</li>
+
+        <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias diferentes que hayas conseguido.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>📝 Insignias de tareas</h2>
+
+    <div class="card tasks">
+      <p>
+        Cada vez que completas una tarea con
+        <code>!hecha</code>, <code>!feito</code> o <code>!feita</code>,
+        esa tarea suma para tu progreso acumulado.
+        Las insignias se desbloquean automáticamente al alcanzar estas metas:
+      </p>
+
+      <div class="milestones">
+        <div class="milestone">📝 <strong>Primera tachada</strong> · 1 tarea</div>
+        <div class="milestone">✏️ <strong>Ya arrancamos</strong> · 10 tareas</div>
+        <div class="milestone">✅ <strong>Lista en marcha</strong> · 25 tareas</div>
+        <div class="milestone">📋 <strong>Tachadora oficial</strong> · 50 tareas</div>
+        <div class="milestone">💯 <strong>100 fuera</strong> · 100 tareas</div>
+        <div class="milestone">🔥 <strong>Peligro para las listas</strong> · 200 tareas</div>
+        <div class="milestone">🖊️ <strong>No deja una viva</strong> · 350 tareas</div>
+        <div class="milestone">📚 <strong>Medio millar tachado</strong> · 500 tareas</div>
+        <div class="milestone">⚡ <strong>Máquina de checks</strong> · 750 tareas</div>
+        <div class="milestone">🌟 <strong>Mil y contando</strong> · 1.000 tareas</div>
+        <div class="milestone">👑 <strong>Verdugo del post-it</strong> · 1.500 tareas</div>
+        <div class="milestone">🏆 <strong>Leyenda del tachón</strong> · 2.000 tareas</div>
+      </div>
+
+      <p>
+        Puedes consultar las metas desde el chat con
+        <code>!insigniastareas</code> o, en gallego,
+        <code>!insigniastarefas</code>.
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🎯 Insignias de retos personales</h2>
+
+    <div class="card challenges">
+      <p>
+        Los retos personales también tienen su propia colección de insignias.
+        Cada reto que termines correctamente suma <strong>1 reto conseguido</strong>
+        a tu progreso histórico.
+      </p>
+
+      <p>
+        Si un reto no se completa, no suma. Los retos antiguos que ya habías superado
+        también cuentan para tu progreso.
+      </p>
+
+      <div class="milestones">
+        <div class="milestone">🎯 <strong>Reto aceptado</strong> · 1 reto</div>
+        <div class="milestone">🌱 <strong>Esto ya empieza</strong> · 3 retos</div>
+        <div class="milestone">✨ <strong>Cinco y contando</strong> · 5 retos</div>
+        <div class="milestone">💪 <strong>Se lo toma en serio</strong> · 10 retos</div>
+        <div class="milestone">👀 <strong>Reto tras reto</strong> · 20 retos</div>
+        <div class="milestone">🌿 <strong>Descanso activo</strong> · 30 retos</div>
+        <div class="milestone">🔥 <strong>50 retos después</strong> · 50 retos</div>
+        <div class="milestone">⚡ <strong>Constancia en movimiento</strong> · 75 retos</div>
+        <div class="milestone">💯 <strong>100 retos superados</strong> · 100 retos</div>
+        <div class="milestone">🏆 <strong>Leyenda de los retos</strong> · 150 retos</div>
+        <div class="milestone">👑 <strong>Doble centenario</strong> · 200 retos</div>
+        <div class="milestone">🔥 <strong>Racha imparable</strong> · 250 retos</div>
+        <div class="milestone">💪 <strong>Fanático de los retos</strong> · 300 retos</div>
+        <div class="milestone">🚀 <strong>Reto Élite</strong> · 400 retos</div>
+        <div class="milestone">🏅 <strong>Maestría de retos</strong> · 500 retos</div>
+      </div>
+
+      <p>
+        Puedes consultar las metas con:
+        <code>!insigniasretos</code>
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🎮 Insignias de minijuegos</h2>
+
+    <div class="card minigames">
+      <p>
+        Las insignias de minijuegos avanzan ahora según la
+        <strong>XP conseguida directamente al acertar respuestas</strong>.
+      </p>
+
+      <p>
+        La XP puede variar según el minijuego y las pistas utilizadas.
+        Los bonus adicionales de rachas o logros siguen existiendo dentro del sistema,
+        pero no se vuelven a sumar al contador de insignias para evitar contar la misma
+        recompensa dos veces.
+      </p>
+
+      <div class="milestones">
+        <div class="milestone">🎯 <strong>Primer acierto</strong> · 30 XP</div>
+        <div class="milestone">👀 <strong>Ojo despierto</strong> · 90 XP</div>
+        <div class="milestone">🔎 <strong>Ojo fino</strong> · 300 XP</div>
+        <div class="milestone">🧠 <strong>Cerebrito</strong> · 900 XP</div>
+        <div class="milestone">🎮 <strong>Maestría mini</strong> · 2.250 XP</div>
+        <div class="milestone">✨ <strong>Descanso brillante</strong> · 4.500 XP</div>
+        <div class="milestone">🏆 <strong>Leyenda del descanso</strong> · 9.000 XP</div>
+        <div class="milestone">⚡ <strong>Mente rápida</strong> · 15.000 XP</div>
+        <div class="milestone">👑 <strong>Rey/Reina del minijuego</strong> · 30.000 XP</div>
+      </div>
+
+      <p>
+        Puedes consultar las metas con
+        <code>!insigniasminijuegos</code>
+        o, en gallego,
+        <code>!insigniasminixogos</code>.
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🔥 Rachas de visualización</h2>
+
+    <div class="card streak">
+      <p>
+        Las insignias de racha premian haber estado presente en varios directos consecutivos.
+      </p>
+
+      <p>
+        <strong>Importante:</strong> para que el sistema pueda registrar tu racha,
+        tienes que <strong>compartirla en el chat de Twitch</strong> cuando aparezca la opción.
+      </p>
+
+      <p>
+        Al compartirla, el bot comprobará automáticamente cuántos directos seguidos llevas
+        y desbloqueará todas las insignias de racha que te correspondan y que todavía no tengas.
+      </p>
+
+      <p>
+        Empieza siendo una visita casual y puede terminar en
+        <em>“casi paga alquiler”</em>. Tú sabrás hasta dónde quieres llegar. 🏠
+      </p>
+
+      <p>
+        Puedes consultar las metas con:
+        <code>!insigniasrachas</code>
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🏅 Estatus y Prestigio</h2>
+
+    <div class="card important">
+      <p>
+        Las insignias no otorgan monedas ni premios físicos; funcionan como un
+        <strong>sistema de coleccionismo, progreso y estatus visual</strong>.
+      </p>
+
+      <p>
+        Al desbloquear logros aumentas tu colección, avanzas en las insignias generales
+        y puedes aparecer entre los mayores coleccionistas del canal.
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>💬 Comandos de insignias</h2>
+
+    <div class="card">
+      <ul>
+        <li><code>!insignias</code> → Muestra todas las categorías disponibles.</li>
+        <li><code>!insigniasstreams</code> → Consulta las metas de asistencia a streams.</li>
+        <li><code>!insigniasrachas</code> → Consulta las metas de rachas de visualización.</li>
+        <li><code>!insigniasestudio</code> → Consulta las metas de estudio.</li>
+        <li><code>!insigniastareas</code> → Consulta las metas de tareas completadas.</li>
+        <li><code>!insigniasretos</code> → Consulta las metas de retos personales.</li>
+        <li><code>!insigniasapoyo</code> → Consulta las metas de apoyo.</li>
+        <li><code>!insigniasejercicio</code> → Consulta las metas de ejercicio.</li>
+        <li><code>!insigniasminijuegos</code> → Consulta las metas de minijuegos por XP.</li>
+        <li><code>!insigniasbosque</code> → Consulta las metas del bosque virtual.</li>
+        <li><code>!insigniasgeneral</code> → Consulta las metas generales.</li>
+
+        <li>
+          <code>!misinsignias</code> →
+          Consulta cuántas insignias has desbloqueado y tu progreso por categorías.
+        </li>
+
+        <li>
+          <code>!infoinsignias</code> →
+          Envía un resumen básico del sistema en el chat.
+        </li>
+
+        <li>
+          <code>!rankinginsignias</code> →
+          Muestra el Top 5 de mayores coleccionistas de insignias del canal.
+        </li>
+
+        <li>
+          <code>Canjeo Ver mis Insignias</code> →
+          Actualiza tu álbum visual personalizado para consultar todas tus medallas.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>📖 Álbum visual web</h2>
+
+    <div class="card">
+      <p>
+        Cada espectador puede tener su propio álbum visual de insignias.
+      </p>
+
+      <p>
+        Las medallas que ya hayas conseguido aparecerán a todo color,
+        mientras que aquellas cuyos requisitos todavía no hayas alcanzado
+        permanecerán bloqueadas y en escala de grises.
+      </p>
+
+      <p>
+        Al ejecutar el canjeo <code>Ver mis Insignias</code>,
+        el bot vuelve a generar tu página para que puedas consultar cómodamente
+        tu colección actualizada.
+      </p>
+
+      <p>
+        En el álbum encontrarás también las categorías
+        <strong>📝 Tareas</strong>,
+        <strong>🎯 Retos personales</strong>
+        y los <strong>🎮 Minijuegos medidos por XP</strong>,
+        junto al resto de categorías.
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🏆 Ranking de coleccionistas</h2>
+
+    <div class="card">
+      <p>
+        Todas las insignias diferentes que desbloquees cuentan para tu colección total.
+      </p>
+
+      <p>
+        Con <code>!rankinginsignias</code> puedes consultar el Top 5 de usuarios
+        con más insignias desbloqueadas.
+      </p>
+
+      <p>
+        No importa de qué categoría procedan:
+        Streams, Rachas, Estudio, Tareas, Retos, Ejercicio, Minijuegos,
+        Bosque, Apoyo y General forman parte de tu colección.
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🌟 Categoría General</h2>
+
+    <div class="card">
+      <p>
+        Las insignias generales no miden una única actividad.
+        Se desbloquean según la cantidad total de
+        <strong>insignias diferentes</strong> que hayas conseguido.
+      </p>
+
+      <p>
+        Para avanzar cuentan tus logros de Streams, Rachas, Estudio, Tareas,
+        Retos, Ejercicio, Minijuegos, Bosque y Apoyo.
+      </p>
+
+      <p>
+        Con las nuevas insignias de retos también aumenta el recorrido total
+        disponible dentro de la colección.
+      </p>
+
+      <p>
+        Así que no hace falta obsesionarse con una sola categoría:
+        participar un poquito en todo también tiene premio. ✨
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>🔗 Guías relacionadas</h2>
+
+    <div class="links">
+
+      <p>
+        🌳 Bosque virtual:<br>
+        <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html
+        </a>
+      </p>
+
+      <p>
+        📝 Tareas:<br>
+        <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html
+        </a>
+      </p>
+
+      <p>
+        🎁 Canjeos:<br>
+        <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html
+        </a>
+      </p>
+
+      <p>
+        📌 Estados:<br>
+        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/estados-y-bebidas/estados.html
+        </a>
+      </p>
+
+      <p>
+        ☕ Bebidas:<br>
+        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html
+        </a>
+      </p>
+
+      <p>
+        🎯 Retos:<br>
+        <a href="https://bibiopotoleando.github.io/retos/retos.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/retos/retos.html
+        </a>
+      </p>
+
+      <p>
+        🎮 Minijuego:<br>
+        <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/minijuego-guia/index.html
+        </a>
+      </p>
+
+      <p>
+        🏅 Insignias:<br>
+        <a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html
+        </a>
+      </p>
+
+      <p>
+        📦 Material:<br>
+        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/estados-y-bebidas/material.html
+        </a>
+      </p>
+
+      <p>
+        👾 Discord:<br>
+        <a href="https://bibiopotoleando.github.io/discord/index.html"
+           target="_blank" rel="noopener noreferrer">
+          https://bibiopotoleando.github.io/discord/index.html
+        </a>
+      </p>
+
+    </div>
+  </section>
+
+
+  <div class="footer">
+    🏅 Gracias por formar parte y construir cada día el rincón opotoleante ✨
+  </div>
+
 </main>
 </body>
 </html>
