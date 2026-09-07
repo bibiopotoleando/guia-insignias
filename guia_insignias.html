@@ -303,6 +303,77 @@ li{margin-bottom:8px}
   .nav-flotante{right:10px;bottom:10px}
 }
 
+
+
+/* ===== MENÚ LATERAL FLOTANTE ===== */
+@media (min-width:1101px){
+  body{
+    padding-left:270px;
+  }
+
+  .indice{
+    position:fixed;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:1500;
+    width:232px;
+    max-height:calc(100vh - 36px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    margin:0;
+    padding:15px;
+    border-radius:22px;
+    scrollbar-width:thin;
+  }
+
+  .indice h2{
+    margin:0 0 5px;
+    font-size:1.08rem;
+    line-height:1.2;
+  }
+
+  .indice-intro{
+    margin:0 0 10px;
+    font-size:.78rem;
+    line-height:1.3;
+  }
+
+  .indice-grid{
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-top:0;
+  }
+
+  .indice-link{
+    min-height:0;
+    justify-content:flex-start;
+    text-align:left;
+    padding:7px 10px;
+    border-radius:13px;
+    font-size:.82rem;
+    line-height:1.2;
+  }
+
+  /* Ya no hace falta el botón Menú inferior: el panel está siempre visible */
+  .nav-flotante a[href="#indice"]{
+    display:none;
+  }
+}
+
+/* En pantallas más estrechas el índice vuelve al contenido para no taparlo */
+@media (max-width:1100px){
+  .indice{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    width:auto;
+    max-height:none;
+    overflow:visible;
+  }
+}
+
 </style>
 </head>
 <body id="arriba">
@@ -341,7 +412,7 @@ li{margin-bottom:8px}
         ligeramente preocupante. 😌
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="como"><h2>🎮 ¿Cómo se consiguen?</h2>
@@ -369,7 +440,7 @@ li{margin-bottom:8px}
         <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias diferentes que hayas conseguido.</li>
       </ul>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="tareas"><h2>📝 Insignias de tareas</h2>
@@ -403,7 +474,7 @@ li{margin-bottom:8px}
         <code>!insigniastarefas</code>.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="retos"><h2>🎯 Insignias de retos personales</h2>
@@ -443,7 +514,7 @@ li{margin-bottom:8px}
         <code>!insigniasretos</code>
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="minijuegos"><h2>🎮 Insignias de minijuegos</h2>
@@ -480,7 +551,7 @@ li{margin-bottom:8px}
         <code>!insigniasminixogos</code>.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="rachas"><h2>🔥 Rachas de visualización</h2>
@@ -510,7 +581,7 @@ li{margin-bottom:8px}
         <code>!insigniasrachas</code>
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="estatus"><h2>🏅 Estatus y Prestigio</h2>
@@ -526,7 +597,7 @@ li{margin-bottom:8px}
         y puedes aparecer entre los mayores coleccionistas del canal.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="comandos"><h2>💬 Comandos de insignias</h2>
@@ -564,7 +635,7 @@ li{margin-bottom:8px}
         <li><code>Ver mis Insignias</code> → Te permite consultar tu colección visual de insignias. <strong>10.000 puntos</strong>.</li>
       </ul>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="album"><h2>📖 Álbum visual web</h2>
@@ -603,7 +674,7 @@ li{margin-bottom:8px}
   <p style="margin-top:12px">La idea es que puedas ver de un vistazo tu progreso, las categorías y todo lo que te queda por desbloquear ✨</p>
 </div>
 
-<a class="volver" href="#indice">↑ Volver arriba</a></section>
+<a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="ranking"><h2>🏆 Ranking de coleccionistas</h2>
@@ -624,7 +695,7 @@ li{margin-bottom:8px}
         Bosque, Apoyo y General forman parte de tu colección.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="general"><h2>🌟 Categoría General</h2>
@@ -651,7 +722,7 @@ li{margin-bottom:8px}
         participar un poquito en todo también tiene premio. ✨
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <section id="guias"><h2>🔗 Guías relacionadas</h2>
@@ -739,7 +810,7 @@ li{margin-bottom:8px}
       </p>
 
     </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
+  <a class="volver" href="#arriba">↑ Volver arriba</a></section>
 
 
   <div class="footer">
