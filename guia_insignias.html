@@ -10,14 +10,14 @@
 html{scroll-behavior:smooth}
 
 :root{
-  --ink:#4e3941;
+  --ink:#4d3840;
   --muted:#80646f;
-  --paper:rgba(255,251,248,.94);
+  --paper:rgba(255,251,248,.95);
   --card:rgba(255,255,255,.88);
   --line:#ead9df;
-  --gold:#e7bb6f;
+  --gold:#e6ba6e;
   --pink:#e9a8b5;
-  --lilac:#a68ddb;
+  --lilac:#a58bdb;
   --sage:#92b993;
   --peach:#f1bd91;
 }
@@ -25,23 +25,22 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   padding:32px;
+  min-height:100vh;
   font-family:"Segoe UI",Arial,sans-serif;
   color:var(--ink);
   line-height:1.65;
   background:
-    radial-gradient(circle at 7% 8%, rgba(233,168,181,.18) 0 85px, transparent 86px),
-    radial-gradient(circle at 92% 10%, rgba(166,141,219,.16) 0 95px, transparent 96px),
-    radial-gradient(circle at 8% 88%, rgba(146,185,147,.18) 0 110px, transparent 111px),
-    radial-gradient(circle at 90% 88%, rgba(231,187,111,.15) 0 115px, transparent 116px),
-    linear-gradient(180deg,#fff7f4 0%,#f7f0ff 48%,#eef8ec 100%);
-  min-height:100vh;
+    radial-gradient(circle at 7% 8%, rgba(233,168,181,.18) 0 88px, transparent 89px),
+    radial-gradient(circle at 93% 9%, rgba(165,139,219,.17) 0 96px, transparent 97px),
+    radial-gradient(circle at 10% 88%, rgba(146,185,147,.18) 0 112px, transparent 113px),
+    radial-gradient(circle at 90% 88%, rgba(230,186,110,.16) 0 112px, transparent 113px),
+    linear-gradient(180deg,#fff7f4 0%,#f7f0ff 50%,#eef8ec 100%);
 }
 
-/* decoración suave, solo visual */
 body::before{
   content:"🏅   ✨   🌟   🎀   🏆   ✨   🏅";
   position:fixed;
-  top:10px;
+  top:8px;
   left:0;
   width:100%;
   text-align:center;
@@ -51,17 +50,16 @@ body::before{
   pointer-events:none;
   z-index:0;
 }
-
 body::after{
-  content:"✨   🏅   🌿   ⭐   🎮   📚   🏆";
+  content:"✨   🏅   📚   🎮   🌿   ⭐   🏆";
   position:fixed;
-  bottom:8px;
+  bottom:7px;
   left:0;
   width:100%;
   text-align:center;
   opacity:.09;
-  letter-spacing:22px;
-  font-size:22px;
+  letter-spacing:20px;
+  font-size:23px;
   pointer-events:none;
   z-index:0;
 }
@@ -72,7 +70,7 @@ main{
   max-width:980px;
   margin:0 auto;
   padding:34px;
-  border-radius:30px;
+  border-radius:31px;
   background:var(--paper);
   border:1px solid rgba(128,100,110,.10);
   box-shadow:0 18px 48px rgba(75,45,65,.10);
@@ -85,29 +83,23 @@ main::before{
   inset:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 5% 14%, rgba(241,189,145,.12) 0 70px, transparent 71px),
-    radial-gradient(circle at 96% 22%, rgba(166,141,219,.11) 0 90px, transparent 91px),
-    radial-gradient(circle at 88% 82%, rgba(146,185,147,.11) 0 105px, transparent 106px);
+    radial-gradient(circle at 5% 17%, rgba(241,189,145,.12) 0 75px, transparent 76px),
+    radial-gradient(circle at 96% 16%, rgba(165,139,219,.12) 0 95px, transparent 96px),
+    radial-gradient(circle at 88% 84%, rgba(146,185,147,.11) 0 108px, transparent 109px);
 }
 
-h1,h2,h3,
-.subtitle,
-section,
-.footer{
-  position:relative;
-  z-index:1;
-}
+h1,h2,h3,.subtitle,section,.footer{position:relative;z-index:1}
 
 h1{
   margin:0;
   text-align:center;
+  color:#563d48;
   font-size:44px;
   line-height:1.1;
-  color:#563d48;
 }
 
 .subtitle{
-  max-width:800px;
+  max-width:820px;
   margin:14px auto 30px;
   text-align:center;
   color:var(--muted);
@@ -120,14 +112,12 @@ section{
 }
 
 h2{
-  color:#654856;
-  font-size:1.6rem;
   margin:0 0 14px;
+  color:#654856;
+  font-size:1.58rem;
 }
 
-h3{
-  color:#6b4c58;
-}
+h3{color:#694b57}
 
 .card{
   background:var(--card);
@@ -135,53 +125,40 @@ h3{
   border-radius:21px;
   padding:20px;
   margin:16px 0;
-  box-shadow:0 5px 16px rgba(70,50,60,.05);
+  box-shadow:0 5px 15px rgba(70,45,55,.05);
 }
-
-.card p:first-child{margin-top:0}
-.card p:last-child{margin-bottom:0}
 
 .important{
   border-left:6px solid var(--sage);
-  background:rgba(237,248,238,.82);
+  background:rgba(238,249,239,.88);
 }
 
 .streak{
   border-left:6px solid #e39b63;
-  background:rgba(255,241,225,.88);
+  background:rgba(255,241,225,.90);
 }
 
 .tasks{
   border-left:6px solid #b98b65;
-  background:rgba(249,240,229,.9);
+  background:rgba(249,240,229,.92);
 }
 
 .minigames{
   border-left:6px solid var(--lilac);
-  background:rgba(243,239,254,.9);
+  background:rgba(243,239,254,.92);
 }
 
 .challenges{
   border-left:6px solid var(--peach);
-  background:rgba(255,242,230,.9);
+  background:rgba(255,242,230,.92);
 }
 
-code{
-  display:inline-block;
-  background:#f3e4e8;
-  color:#5f424c;
-  border:1px solid #ead5db;
-  padding:3px 8px;
-  border-radius:9px;
-  font-weight:800;
-}
-
-/* MANTENEMOS TODOS LOS LISTADOS / HITOS */
+/* TODOS los listados de insignias siguen aquí */
 .milestones{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
   gap:10px;
-  margin:16px 0;
+  margin-top:16px;
 }
 
 .milestone{
@@ -197,37 +174,35 @@ code{
 .milestone::after{
   content:"✦";
   position:absolute;
-  right:10px;
-  top:5px;
+  right:9px;
+  top:4px;
   opacity:.10;
-  font-size:28px;
+  font-size:27px;
 }
 
-.milestone strong{
-  color:#5b3f49;
+.milestone strong{color:#5b3f49}
+
+code{
+  background:#f3e4e8;
+  color:#5f424c;
+  border:1px solid #ead5db;
+  padding:3px 8px;
+  border-radius:9px;
+  font-weight:800;
 }
 
-ul{
-  padding-left:24px;
-}
+ul{padding-left:24px}
+li{margin-bottom:8px}
 
-li{
-  margin-bottom:8px;
-}
-
-/* MENÚ GRANDE ARRIBA */
 .indice{
-  background:linear-gradient(135deg,rgba(255,252,246,.96),rgba(249,241,255,.96));
-  border:2px solid #e7c889;
+  background:linear-gradient(135deg,#fffdf8 0%,#f8f1ff 100%);
+  border:2px solid #e5c785;
   border-radius:24px;
   padding:20px;
   box-shadow:0 8px 22px rgba(105,75,50,.07);
 }
 
-.indice-intro{
-  margin-top:-4px;
-  opacity:.82;
-}
+.indice-intro{margin-top:-4px;opacity:.82}
 
 .indice-grid{
   display:grid;
@@ -240,8 +215,8 @@ li{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   min-height:44px;
+  text-align:center;
   padding:10px 12px;
   border-radius:999px;
   background:rgba(255,255,255,.92);
@@ -250,15 +225,19 @@ li{
   text-decoration:none;
   font-weight:800;
   box-shadow:0 3px 10px rgba(120,80,30,.05);
-  transition:.15s;
 }
+.indice-link:hover{transform:translateY(-1px);background:#fff}
 
-.indice-link:hover{
-  transform:translateY(-1px);
-  background:#fff;
+.links{
+  background:rgba(120,160,255,.07);
+  border:2px solid rgba(120,160,255,.30);
+  border-radius:16px;
+  padding:16px;
+  margin-top:20px;
 }
+.links p{margin-bottom:14px}
+.links a{color:#5c7cff;font-weight:700;word-break:break-word}
 
-/* imagen real */
 .guia-ejemplo-img,
 .card img{
   width:100%;
@@ -266,33 +245,12 @@ li{
   height:auto;
   display:block;
   margin:18px auto;
-  border-radius:20px;
+  border-radius:21px;
   border:2px solid #ead8df;
   box-shadow:0 12px 30px rgba(70,45,60,.11);
 }
 
-.guia-ejemplo-caption{
-  text-align:center;
-  color:var(--muted);
-  margin-top:8px;
-}
-
-.links{
-  background:rgba(120,160,255,.07);
-  border:2px solid rgba(120,160,255,.30);
-  border-radius:16px;
-  padding:16px;
-}
-
-.links p{
-  margin:0 0 14px;
-}
-
-.links a{
-  color:#5c7cff;
-  font-weight:700;
-  word-break:break-word;
-}
+.guia-ejemplo-caption{text-align:center;opacity:.82;margin-top:8px}
 
 .volver{
   display:inline-block;
@@ -301,18 +259,13 @@ li{
   font-weight:800;
   text-decoration:none;
 }
+.volver:hover{text-decoration:underline}
 
-.volver:hover{
-  text-decoration:underline;
-}
+.footer{text-align:center;color:#80646f;margin-top:38px}
 
-.footer{
-  text-align:center;
-  color:#80646f;
-  padding-top:6px;
-}
+/* ocultamos el Arriba antiguo para no duplicarlo */
+.top-btn{display:none!important}
 
-/* botones pequeños flotantes */
 .nav-flotante{
   position:fixed;
   right:15px;
@@ -320,8 +273,8 @@ li{
   z-index:1200;
   display:flex;
   gap:7px;
+  align-items:center;
 }
-
 .nav-flotante a{
   display:inline-flex;
   align-items:center;
@@ -338,24 +291,16 @@ li{
   box-shadow:0 8px 18px rgba(0,0,0,.14);
 }
 
-.nav-flotante a:hover{
-  transform:translateY(-1px);
-}
-
 @media(max-width:760px){
   body{padding:14px}
   main{padding:21px;border-radius:23px}
   h1{font-size:34px}
   .indice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
 @media(max-width:500px){
   .indice-grid{grid-template-columns:1fr}
   .milestones{grid-template-columns:1fr}
-  .nav-flotante{
-    right:10px;
-    bottom:10px;
-  }
+  .nav-flotante{right:10px;bottom:10px}
 }
 
 </style>
@@ -653,7 +598,7 @@ li{
   <h3>👀 Ejemplo rápido de cómo se ve</h3>
   <p>Así se ve un álbum real de insignias del canal: algunas medallas aparecen ya desbloqueadas y otras siguen bloqueadas hasta que alcances sus metas.</p>
   <div style="margin:18px 0">
-    <img class="guia-ejemplo-img" src="imágenes/image.png" alt="Ejemplo de álbum de insignias del canal" style="width:100%;max-width:860px;border-radius:18px;border:1px solid rgba(90,70,50,.15);box-shadow:0 8px 24px rgba(0,0,0,.08);display:block;margin:auto">
+    <img src="imágenes/image.png" alt="Ejemplo de álbum de insignias del canal" style="width:100%;max-width:860px;border-radius:18px;border:1px solid rgba(90,70,50,.15);box-shadow:0 8px 24px rgba(0,0,0,.08);display:block;margin:auto">
   </div>
   <p style="margin-top:12px">La idea es que puedas ver de un vistazo tu progreso, las categorías y todo lo que te queda por desbloquear ✨</p>
 </div>
@@ -802,6 +747,10 @@ li{
   </div>
 
 </main>
+
+<a class="top-btn" href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
+
+
 <div class="nav-flotante" aria-label="Navegación rápida">
   <a href="#indice" aria-label="Ir al menú de esta guía">☰ Menú</a>
   <a href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
