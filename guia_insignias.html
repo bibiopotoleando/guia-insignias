@@ -98,8 +98,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
       gap: 10px;
-      margin-top: 16px;
-    }
+      margin-}
 
     .milestone {
       background: #fbf7f1;
@@ -117,8 +116,7 @@
       border: 2px solid rgba(120,160,255,.4);
       border-radius: 14px;
       padding: 15px;
-      margin-top: 20px;
-    }
+      margin-}
 
     .links p {
       margin-bottom: 14px;
@@ -132,8 +130,7 @@
 
     .footer {
       text-align: center;
-      margin-top: 40px;
-      color: #7a6250;
+      margin-color: #7a6250;
     }
 
     @media (max-width: 650px) {
@@ -158,7 +155,7 @@ section[id]{scroll-margin-top:18px}
 .indice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
 .indice-link{display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 12px;border-radius:999px;background:rgba(255,255,255,.9);border:1px solid #f4cf68;color:inherit;text-decoration:none;font-weight:700;box-shadow:0 3px 10px rgba(120,80,30,.07)}
 .indice-link:hover{transform:translateY(-1px);background:#fff}
-.volver{display:inline-block;margin-top:12px;color:inherit;font-weight:700;text-decoration:none;opacity:.78}
+.volver{display:inline-block;margin-color:inherit;font-weight:700;text-decoration:none;opacity:.78}
 .volver:hover{text-decoration:underline}
 .demo-btn{display:inline-block;margin:8px 8px 0 0;padding:10px 14px;border-radius:999px;background:#efe2d2;color:#3d2d22;text-decoration:none;font-weight:800;border:1px solid #d7c2a8}
 .demo-btn:hover{filter:brightness(.98);transform:translateY(-1px)}
@@ -170,10 +167,94 @@ section[id]{scroll-margin-top:18px}
 .badge-sample.locked{filter:grayscale(1);opacity:.45}
 @media(max-width:600px){.badge-demo{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+
+.top-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:9999;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#efe2d2;
+  color:#3d2d22;
+  border:2px solid #cdb69a;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.top-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 22px rgba(0,0,0,.22);
+}
+@media(max-width:600px){
+  .top-btn{
+    right:12px;
+    bottom:12px;
+    padding:9px 12px;
+    font-size:.9rem;
+  }
+}
+
+
+
+}
+
+
+
+/* ===== navegación flotante compacta ===== */
+.nav-flotante{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:1200;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.nav-flotante a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:10px 12px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:.9rem;
+  line-height:1;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  transition:transform .15s ease, filter .15s ease;
+}
+.nav-flotante a:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.03);
+}
+@media(max-width:600px){
+  .nav-flotante{
+    right:10px;
+    bottom:10px;
+    gap:6px;
+  }
+  .nav-flotante a{
+    padding:9px 10px;
+    font-size:.82rem;
+  }
+}
+
+.nav-flotante a{background:#fff7df;color:#6b4b2a;border:2px solid #f4cf68;}
+
+
+.guia-ejemplo-img{width:100%;max-width:980px;display:block;margin:16px auto 8px;border-radius:18px;border:2px solid #eadcc8;box-shadow:0 10px 28px rgba(110,80,40,.10)}
+.guia-ejemplo-caption{text-align:center;opacity:.85;margin-top:8px}
 </style>
 </head>
 
-<body>
+<body id="arriba">
 <main>
 
   <h1>🏅 Guía de Insignias</h1>
@@ -209,7 +290,7 @@ section[id]{scroll-margin-top:18px}
         ligeramente preocupante. 😌
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="como"><h2>🎮 ¿Cómo se consiguen?</h2>
@@ -237,7 +318,7 @@ section[id]{scroll-margin-top:18px}
         <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias diferentes que hayas conseguido.</li>
       </ul>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="tareas"><h2>📝 Insignias de tareas</h2>
@@ -271,7 +352,7 @@ section[id]{scroll-margin-top:18px}
         <code>!insigniastarefas</code>.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="retos"><h2>🎯 Insignias de retos personales</h2>
@@ -311,7 +392,7 @@ section[id]{scroll-margin-top:18px}
         <code>!insigniasretos</code>
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="minijuegos"><h2>🎮 Insignias de minijuegos</h2>
@@ -348,7 +429,7 @@ section[id]{scroll-margin-top:18px}
         <code>!insigniasminixogos</code>.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="rachas"><h2>🔥 Rachas de visualización</h2>
@@ -378,7 +459,7 @@ section[id]{scroll-margin-top:18px}
         <code>!insigniasrachas</code>
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="estatus"><h2>🏅 Estatus y Prestigio</h2>
@@ -394,7 +475,7 @@ section[id]{scroll-margin-top:18px}
         y puedes aparecer entre los mayores coleccionistas del canal.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="comandos"><h2>💬 Comandos de insignias</h2>
@@ -432,7 +513,7 @@ section[id]{scroll-margin-top:18px}
         <li><code>Ver mis Insignias</code> → Te permite consultar tu colección visual de insignias. <strong>10.000 puntos</strong>.</li>
       </ul>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="album"><h2>📖 Álbum visual web</h2>
@@ -462,21 +543,17 @@ section[id]{scroll-margin-top:18px}
       </p>
     </div>
   
+
 <div class="card">
   <h3>👀 Ejemplo rápido de cómo se ve</h3>
-  <p>En el álbum, las medallas conseguidas aparecen activas y las que todavía faltan se mantienen bloqueadas. La idea es que puedas ver de un vistazo todo lo que has ido coleccionando.</p>
-  <div class="badge-demo">
-    <div class="badge-sample">📝<br>Primera tachada</div>
-    <div class="badge-sample">🎯<br>Reto aceptado</div>
-    <div class="badge-sample">🌳<br>Bosque en marcha</div>
-    <div class="badge-sample locked">🏆<br>Bloqueada</div>
-    <div class="badge-sample locked">👑<br>Bloqueada</div>
-    <div class="badge-sample locked">✨<br>Bloqueada</div>
+  <p>Así se ve un álbum real de insignias del canal: algunas medallas aparecen ya desbloqueadas y otras siguen bloqueadas hasta que alcances sus metas.</p>
+  <div style="margin:18px 0">
+    <img src="imagenes/image.png" alt="Ejemplo de álbum de insignias del canal" style="width:100%;max-width:860px;border-radius:18px;border:1px solid rgba(90,70,50,.15);box-shadow:0 8px 24px rgba(0,0,0,.08);display:block;margin:auto">
   </div>
-  <p style="margin-top:16px">Si quieres ver un ejemplo real de una colección web del canal, puedes cotillear también el bosque de Alba:</p>
-  <a class="demo-btn" href="https://bibiopotoleando.github.io/bosque-visual/usuarios/albaopotoleando.html" target="_blank" rel="noopener noreferrer">🌳 Ver ejemplo de colección visual</a>
+  <p style="margin-top:12px">La idea es que puedas ver de un vistazo tu progreso, las categorías y todo lo que te queda por desbloquear ✨</p>
 </div>
-<a class="volver" href="#indice">↑ Volver al índice</a></section>
+
+<a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="ranking"><h2>🏆 Ranking de coleccionistas</h2>
@@ -497,7 +574,7 @@ section[id]{scroll-margin-top:18px}
         Bosque, Apoyo y General forman parte de tu colección.
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="general"><h2>🌟 Categoría General</h2>
@@ -524,7 +601,7 @@ section[id]{scroll-margin-top:18px}
         participar un poquito en todo también tiene premio. ✨
       </p>
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <section id="guias"><h2>🔗 Guías relacionadas</h2>
@@ -612,7 +689,7 @@ section[id]{scroll-margin-top:18px}
       </p>
 
     </div>
-  <a class="volver" href="#indice">↑ Volver al índice</a></section>
+  <a class="volver" href="#indice">↑ Volver arriba</a></section>
 
 
   <div class="footer">
@@ -620,5 +697,14 @@ section[id]{scroll-margin-top:18px}
   </div>
 
 </main>
+
+<a class="top-btn" href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
+
+
+<div class="nav-flotante" aria-label="Navegación rápida">
+  <a href="#indice" aria-label="Ir al menú de esta guía">☰ Menú</a>
+  <a href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
+</div>
+
 </body>
 </html>
