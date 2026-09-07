@@ -1,709 +1,295 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Insignias</title>
-
-  <style>
-    body {
-      margin: 0;
-      padding: 32px;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f5efe6;
-      color: #4b392c;
-      line-height: 1.6;
-    }
-
-    main {
-      max-width: 950px;
-      margin: 0 auto;
-      background: rgba(255,255,255,.72);
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 8px 28px rgba(0,0,0,.08);
-    }
-
-    h1, h2, h3 {
-      color: #3d2d22;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 42px;
-      margin-top: 0;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #7a6250;
-      margin-bottom: 32px;
-      font-size: 18px;
-    }
-
-    section {
-      margin-bottom: 34px;
-    }
-
-    .card {
-      background: rgba(255,255,255,.78);
-      border-radius: 20px;
-      padding: 20px;
-      margin: 16px 0;
-      box-shadow: 0 4px 14px rgba(0,0,0,.05);
-    }
-
-    code {
-      background: #efe2d2;
-      padding: 3px 7px;
-      border-radius: 8px;
-      font-weight: 700;
-    }
-
-    ul {
-      padding-left: 24px;
-    }
-
-    .important {
-      border-left: 5px solid #7da67d;
-      padding-left: 16px;
-      background: rgba(235,245,235,.6);
-    }
-
-    .streak {
-      border-left: 5px solid #e39b63;
-      padding-left: 16px;
-      background: rgba(255,239,220,.65);
-    }
-
-    .tasks {
-      border-left: 5px solid #b58a62;
-      padding-left: 16px;
-      background: rgba(245,235,222,.72);
-    }
-
-    .minigames {
-      border-left: 5px solid #8b7cc7;
-      padding-left: 16px;
-      background: rgba(239,235,250,.72);
-    }
-
-    .challenges {
-      border-left: 5px solid #d28a59;
-      padding-left: 16px;
-      background: rgba(255,240,225,.72);
-    }
-
-    .milestones {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 10px;
-      margin-}
-
-    .milestone {
-      background: #fbf7f1;
-      border-radius: 14px;
-      padding: 12px 14px;
-      border: 1px solid #eadccb;
-    }
-
-    .milestone strong {
-      color: #3d2d22;
-    }
-
-    .links {
-      background: rgba(120,160,255,.08);
-      border: 2px solid rgba(120,160,255,.4);
-      border-radius: 14px;
-      padding: 15px;
-      margin-}
-
-    .links p {
-      margin-bottom: 14px;
-    }
-
-    .links a {
-      color: #5c7cff;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .footer {
-      text-align: center;
-      margin-color: #7a6250;
-    }
-
-    @media (max-width: 650px) {
-      body {
-        padding: 14px;
-      }
-
-      main {
-        padding: 20px;
-        border-radius: 20px;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-    }
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Insignias</title>
+<style>
+:root{
+  --bg1:#fff7f4; --bg2:#f7f0ff; --bg3:#eef8ec; --paper:rgba(255,250,247,.96);
+  --ink:#4d3840; --muted:#80656d; --line:#ecd8df; --gold:#e4b86b; --sage:#8db48f; --lila:#a188d9;
+  --pink:#e9a8b4; --peach:#f4c596; --mint:#b8e3c5;
+}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-section[id]{scroll-margin-top:18px}
-.indice{background:linear-gradient(135deg,#fffdf6 0%,#fff7df 100%);border:2px solid #fbbf24}
-.indice-intro{margin-top:-4px;opacity:.82}
-.indice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
-.indice-link{display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 12px;border-radius:999px;background:rgba(255,255,255,.9);border:1px solid #f4cf68;color:inherit;text-decoration:none;font-weight:700;box-shadow:0 3px 10px rgba(120,80,30,.07)}
-.indice-link:hover{transform:translateY(-1px);background:#fff}
-.volver{display:inline-block;margin-color:inherit;font-weight:700;text-decoration:none;opacity:.78}
-.volver:hover{text-decoration:underline}
-.demo-btn{display:inline-block;margin:8px 8px 0 0;padding:10px 14px;border-radius:999px;background:#efe2d2;color:#3d2d22;text-decoration:none;font-weight:800;border:1px solid #d7c2a8}
-.demo-btn:hover{filter:brightness(.98);transform:translateY(-1px)}
-@media(max-width:760px){.indice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:480px){.indice-grid{grid-template-columns:1fr}}
-
-.badge-demo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
-.badge-sample{padding:16px 10px;border-radius:16px;background:#fbf7f1;border:1px solid #eadccb;text-align:center;font-weight:700}
-.badge-sample.locked{filter:grayscale(1);opacity:.45}
-@media(max-width:600px){.badge-demo{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-
-.top-btn{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:9999;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  padding:10px 14px;
-  border-radius:999px;
-  background:#efe2d2;
-  color:#3d2d22;
-  border:2px solid #cdb69a;
-  text-decoration:none;
-  font-weight:800;
-  box-shadow:0 6px 18px rgba(0,0,0,.18);
-  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+body{
+  margin:0; font-family:"Segoe UI",Arial,sans-serif; color:var(--ink); line-height:1.7;
+  background:
+    radial-gradient(circle at 10% 9%, rgba(233,168,180,.15) 0 90px, transparent 91px),
+    radial-gradient(circle at 88% 8%, rgba(161,136,217,.15) 0 95px, transparent 96px),
+    radial-gradient(circle at 12% 85%, rgba(184,227,197,.18) 0 110px, transparent 111px),
+    linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 48%, var(--bg3) 100%);
 }
-.top-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 9px 22px rgba(0,0,0,.22);
+body::before{
+  content:"🏅  ✨  🎀  🌟  🏆  ✨  🏅";
+  position:fixed; inset:0 auto auto 0; width:100%; text-align:center; padding-top:6px;
+  opacity:.12; letter-spacing:18px; font-size:24px; pointer-events:none; z-index:0;
 }
-@media(max-width:600px){
-  .top-btn{
-    right:12px;
-    bottom:12px;
-    padding:9px 12px;
-    font-size:.9rem;
-  }
-}
-
-
-
-}
-
-
-
-/* ===== navegación flotante compacta ===== */
-.nav-flotante{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  z-index:1200;
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-.nav-flotante a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  padding:10px 12px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:800;
-  font-size:.9rem;
-  line-height:1;
-  box-shadow:0 8px 20px rgba(0,0,0,.18);
-  transition:transform .15s ease, filter .15s ease;
-}
-.nav-flotante a:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.03);
-}
-@media(max-width:600px){
-  .nav-flotante{
-    right:10px;
-    bottom:10px;
-    gap:6px;
-  }
-  .nav-flotante a{
-    padding:9px 10px;
-    font-size:.82rem;
-  }
-}
-
-.nav-flotante a{background:#fff7df;color:#6b4b2a;border:2px solid #f4cf68;}
-
-
-.guia-ejemplo-img{width:100%;max-width:980px;display:block;margin:16px auto 8px;border-radius:18px;border:2px solid #eadcc8;box-shadow:0 10px 28px rgba(110,80,40,.10)}
-.guia-ejemplo-caption{text-align:center;opacity:.85;margin-top:8px}
+.topbar{position:sticky; top:0; z-index:1000; background:rgba(255,247,244,.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(128,101,109,.14); box-shadow:0 6px 18px rgba(70,40,55,.06)}
+.topbar-inner{max-width:1150px; margin:auto; padding:12px 18px; display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+.brand{font-weight:900; color:#6b4955}
+.top-links{display:flex; gap:8px; flex-wrap:wrap}
+.top-links a,.floating a{text-decoration:none; color:#5b3f49; font-weight:800; font-size:.92rem; background:#fff5df; border:1px solid #ebd29f; border-radius:999px; padding:8px 13px; box-shadow:0 4px 10px rgba(120,80,30,.06)}
+.layout{max-width:1150px; margin:0 auto; display:grid; grid-template-columns:260px minmax(0,1fr); gap:24px; padding:28px 18px 50px; position:relative; z-index:1}
+.side{position:sticky; top:92px; align-self:start; background:rgba(255,252,248,.92); border:2px solid #efd7ab; border-radius:26px; padding:18px; box-shadow:0 10px 30px rgba(90,70,40,.08)}
+.side h3{margin:0 0 12px; font-size:1.05rem; color:#6b4b2a}
+.side a{display:block; text-decoration:none; color:var(--ink); padding:9px 12px; border-radius:14px; margin:6px 0; font-weight:700; background:rgba(255,255,255,.68)}
+.side a:hover{background:#fff}
+main{background:var(--paper); border:1px solid rgba(128,101,109,.10); border-radius:34px; padding:34px; box-shadow:0 16px 40px rgba(0,0,0,.08); overflow:hidden; position:relative}
+main::before{content:""; position:absolute; inset:0; background:
+    radial-gradient(circle at 6% 20%, rgba(244,197,150,.16) 0 80px, transparent 81px),
+    radial-gradient(circle at 95% 14%, rgba(161,136,217,.14) 0 100px, transparent 101px),
+    radial-gradient(circle at 85% 84%, rgba(184,227,197,.16) 0 110px, transparent 111px);
+  pointer-events:none;}
+header.hero{position:relative; z-index:1; text-align:center; margin-bottom:28px}
+h1{font-size:2.9rem; line-height:1.08; margin:0; color:#523841}
+.subtitle{max-width:760px; margin:14px auto 0; color:var(--muted); font-size:1.08rem}
+.hero-pill{display:inline-flex; gap:8px; align-items:center; margin-top:16px; padding:10px 16px; border-radius:999px; background:#fff5e7; border:1px solid #efd7ab; font-weight:800}
+section{position:relative; z-index:1; margin-bottom:26px; scroll-margin-top:90px}
+h2{margin:0 0 14px; color:#654554; font-size:1.55rem}
+.card,.mini,.example-card{background:rgba(255,255,255,.84); border:1px solid var(--line); border-radius:22px; padding:18px 20px; box-shadow:0 5px 14px rgba(50,40,30,.05); margin:14px 0}
+.grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+.grid-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.streams{border-left:6px solid var(--sage); background:#f5fbf6}
+.tasks{border-left:6px solid #ba8e63; background:#fbf6ef}
+.challenges{border-left:6px solid var(--peach); background:#fff7ef}
+.minigames{border-left:6px solid var(--lila); background:#f7f4ff}
+.streak{border-left:6px solid var(--pink); background:#fff5f7}
+.general{border-left:6px solid var(--gold); background:#fffaf0}
+.tag{display:inline-block; padding:5px 10px; border-radius:999px; background:#f5e6ea; margin:4px 6px 0 0; font-weight:700; font-size:.92rem}
+code{background:#f3e4e8; border-radius:9px; padding:3px 8px; font-weight:800}
+.example-card{background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(249,246,255,.96)); border:2px solid #e6dbf5}
+.example-img{width:100%; max-width:860px; display:block; margin:16px auto; border-radius:22px; border:1px solid rgba(90,70,50,.14); box-shadow:0 10px 26px rgba(0,0,0,.10)}
+.links{background:rgba(120,160,255,.08); border:2px solid rgba(120,160,255,.32); border-radius:16px; padding:16px}
+.links p{margin:0 0 14px}
+.links a{color:#5c7cff; font-weight:700; word-break:break-word}
+.volver{display:inline-block; text-decoration:none; color:#6f5a49; font-weight:800; margin-top:8px}
+.floating{position:fixed; right:16px; bottom:16px; z-index:1200; display:flex; flex-direction:column; gap:8px}
+.footer{text-align:center; color:#7a6454; padding-top:10px}
+@media (max-width:980px){ .layout{grid-template-columns:1fr} .side{position:relative; top:0; order:-1} }
+@media (max-width:700px){ body{font-size:15px} main{padding:22px; border-radius:24px} h1{font-size:2.15rem} .grid-2,.grid-3{grid-template-columns:1fr} .topbar-inner{padding:10px 12px} .layout{padding:16px 12px 40px} }
 </style>
 </head>
-
-<body id="arriba">
-<main>
-
-  <h1>🏅 Guía de Insignias</h1>
-
-  <div class="subtitle">
-    Colecciona logros participando en el canal, estudiando, completando tareas y retos,
-    jugando, manteniendo tus rachas y formando parte de la comunidad ✨
+<body id="top">
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">🏅 Insignias · guía</div>
+    <div class="top-links">
+      <a href="#indice">☰ Menú</a>
+      <a href="#album">👀 Ejemplo</a>
+      <a href="#guias">🔗 Otras guías</a>
+    </div>
   </div>
-<section class="indice" id="indice">
-<h2>📚 Ir directamente a...</h2>
-<p class="indice-intro">Pulsa en el apartado que quieras consultar.</p>
-<div class="indice-grid"><a class="indice-link" href="#que-son">✨ Qué son</a><a class="indice-link" href="#como">🎮 Conseguirlas</a><a class="indice-link" href="#tareas">📝 Tareas</a><a class="indice-link" href="#retos">🎯 Retos</a><a class="indice-link" href="#minijuegos">🎮 Minijuegos</a><a class="indice-link" href="#rachas">🔥 Rachas</a><a class="indice-link" href="#comandos">💬 Comandos</a><a class="indice-link" href="#album">📖 Álbum</a><a class="indice-link" href="#ranking">🏆 Ranking</a><a class="indice-link" href="#general">🌟 General</a><a class="indice-link" href="#guias">🔗 Más guías</a></div>
+</nav>
+
+<div class="layout">
+  <aside class="side" id="indice">
+    <h3>📚 Ir directamente a…</h3>
+    <a href="#quees">✨ Qué son</a>
+    <a href="#consiguen">🎮 Cómo se consiguen</a>
+    <a href="#tareas">📝 Tareas</a>
+    <a href="#retos">🎯 Retos</a>
+    <a href="#minijuegos">🎮 Minijuegos</a>
+    <a href="#rachas">🔥 Rachas</a>
+    <a href="#prestigio">🏅 Estatus y prestigio</a>
+    <a href="#comandos">💬 Comandos</a>
+    <a href="#album">📖 Álbum visual</a>
+    <a href="#ranking">🏆 Ranking</a>
+    <a href="#general">🌟 Categoría general</a>
+    <a href="#guias">🔗 Guías relacionadas</a>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <h1>🏅 Guía de Insignias</h1>
+      <p class="subtitle">
+        Las insignias son la forma visual de reconocer la constancia dentro del canal.
+        Algunas salen por tareas, otras por retos, rachas, minijuegos, bosque o apoyo a la comunidad.
+      </p>
+      <div class="hero-pill">✨ Desbloquea · 📚 colecciona · 🏆 luce tu progreso</div>
+    </header>
+
+    <section id="quees">
+      <h2>✨ ¿Qué son las insignias?</h2>
+      <div class="card">
+        Son medallas coleccionables que representan hitos del canal.
+        No necesitas memorizar nada raro: tú participas, el sistema va registrando y, cuando llegas a ciertas metas,
+        se desbloquean nuevas insignias.
+      </div>
+      <div class="grid-3">
+        <div class="mini"><strong>📚 Colección</strong><br>Se organizan por categorías, para que veas rápido de dónde viene cada logro.</div>
+        <div class="mini"><strong>🌟 Progreso</strong><br>Puedes ver qué tienes desbloqueado y qué te falta.</div>
+        <div class="mini"><strong>🏆 Prestigio</strong><br>Cuantas más insignias consigas, más completa será tu vitrina.</div>
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="consiguen">
+      <h2>🎮 ¿Cómo se consiguen?</h2>
+      <div class="card">
+        Las insignias salen de distintas actividades del canal: asistencia a directos, rachas, tareas completadas,
+        retos personales, ejercicio, minijuegos, progreso en el bosque y otras formas de participación.
+      </div>
+      <div class="grid-2">
+        <div class="card streams"><strong>📺 Streams</strong><br>Por estar presente y acumular directos.</div>
+        <div class="card streak"><strong>🔥 Rachas</strong><br>Por volver y mantener constancia.</div>
+        <div class="card tasks"><strong>📝 Tareas</strong><br>Por tachar trabajo real del estudio.</div>
+        <div class="card challenges"><strong>🎯 Retos</strong><br>Por ir cumpliendo retos personales del chat.</div>
+        <div class="card minigames"><strong>🎮 Minijuegos</strong><br>Por tu actividad y XP en las dinámicas.</div>
+        <div class="card general"><strong>🌟 Generales</strong><br>Por mezclar varias formas de participación.</div>
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="tareas">
+      <h2>📝 Insignias de tareas</h2>
+      <div class="card tasks">
+        Cada vez que completas una tarea con <code>!hecha</code>, <code>!feito</code> o <code>!feita</code>,
+        vas sumando progreso en esta categoría.
+      </div>
+      <div class="card">
+        Si quieres consultar la categoría concreta, tienes comandos como
+        <code>!insigniastareas</code> y <code>!insigniastarefas</code>.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="retos">
+      <h2>🎯 Insignias de retos personales</h2>
+      <div class="card challenges">
+        Los retos personales del chat también tienen su propia progresión.
+        Cumplirlos de forma constante te abre la puerta a nuevas medallas.
+      </div>
+      <div class="card">
+        Puedes consultar esta categoría con <code>!insigniasretos</code>.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="minijuegos">
+      <h2>🎮 Insignias de minijuegos</h2>
+      <div class="card minigames">
+        Los minijuegos y su XP también alimentan una rama propia de insignias.
+        Aquí cuenta tu participación, tus aciertos y tu recorrido con el tiempo.
+      </div>
+      <div class="card">
+        Comandos útiles: <code>!insigniasminijuegos</code> y <code>!insigniasminixogos</code>.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="rachas">
+      <h2>🔥 Rachas de visualización</h2>
+      <div class="card streak">
+        Hay insignias ligadas a la constancia de presencia en el canal.
+        Cuanto más vuelves, más sube esta parte de tu colección.
+      </div>
+      <div class="card">
+        Puedes consultar la parte de rachas con <code>!insigniasrachas</code>.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="prestigio">
+      <h2>🏅 Estatus y Prestigio</h2>
+      <div class="card general">
+        El valor bonito de las insignias está en el conjunto:
+        no es una sola medalla, sino toda tu vitrina acumulada con el paso del tiempo.
+      </div>
+      <div class="grid-2">
+        <div class="mini">✨ Algunas reflejan apoyo o presencia.</div>
+        <div class="mini">🌳 Otras se relacionan con bosque, ejercicio o estudio.</div>
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="comandos">
+      <h2>💬 Comandos de insignias</h2>
+      <div class="grid-3">
+        <div class="mini"><strong><code>!insignias</code></strong><br>Vista general.</div>
+        <div class="mini"><strong><code>!misinsignias</code></strong><br>Tu progreso personal.</div>
+        <div class="mini"><strong><code>!infoinsignias</code></strong><br>Resumen del sistema.</div>
+      </div>
+      <div class="card">
+        También existen categorías específicas como:
+        <span class="tag">!insigniasstreams</span>
+        <span class="tag">!insigniasrachas</span>
+        <span class="tag">!insigniasestudio</span>
+        <span class="tag">!insigniastareas</span>
+        <span class="tag">!insigniasretos</span>
+        <span class="tag">!insigniasapoyo</span>
+        <span class="tag">!insigniasejercicio</span>
+        <span class="tag">!insigniasminijuegos</span>
+        <span class="tag">!insigniasbosque</span>
+        <span class="tag">!insigniasgeneral</span>
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="album">
+      <h2>📖 Álbum visual web</h2>
+      <div class="example-card">
+        <p>
+          Aquí se ve de maravilla el sistema: qué medallas están ya desbloqueadas, cuáles siguen grises
+          y cuánto te falta para completar más categorías.
+        </p>
+        <img class="example-img" src="imagenes/image.png" alt="Ejemplo real del álbum de insignias del canal">
+        <p>
+          Si no se ve en GitHub Pages, revisa que el archivo exista exactamente en
+          <code>guia-insignias/imagenes/image.png</code> y que el nombre coincida tal cual.
+        </p>
+      </div>
+      <div class="card">
+        Para actualizar o consultar esta parte, las recompensas más relacionadas son
+        <strong>Actualizar álbum de insignias</strong> y <strong>Ver mis Insignias</strong>.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="ranking">
+      <h2>🏆 Ranking de coleccionistas</h2>
+      <div class="card">
+        Todas las insignias distintas que desbloqueas cuentan para tu colección total.
+        Con <code>!rankinginsignias</code> puedes consultar el Top del canal.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    <section id="general">
+      <h2>🌟 Categoría General</h2>
+      <div class="card general">
+        Es la parte que remata el conjunto y recoge la sensación de progreso global dentro del canal.
+        No se trata de una sola acción: es la mezcla de todo lo que vas construyendo.
+      </div>
+      <a class="volver" href="#indice">↑ Volver al menú</a>
+    </section>
+
+    
+<section id="guias">
+  <h2>🔗 Guías relacionadas</h2>
+  <div class="links">
+    <p>🌳 Bosque virtual:<br><a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html">https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html</a></p>
+    <p>📝 Tareas:<br><a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html">https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html</a></p>
+    <p>🎁 Canjeos:<br><a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html">https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html</a></p>
+    <p>📌 Estados:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html">https://bibiopotoleando.github.io/estados-y-bebidas/estados.html</a></p>
+    <p>☕ Bebidas:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html">https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html</a></p>
+    <p>🎯 Retos:<br><a href="https://bibiopotoleando.github.io/retos/retos.html">https://bibiopotoleando.github.io/retos/retos.html</a></p>
+    <p>🎮 Minijuego:<br><a href="https://bibiopotoleando.github.io/minijuego-guia/index.html">https://bibiopotoleando.github.io/minijuego-guia/index.html</a></p>
+    <p>🏅 Insignias:<br><a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html">https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html</a></p>
+    <p>📦 Material:<br><a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html">https://bibiopotoleando.github.io/estados-y-bebidas/material.html</a></p>
+    <p>👾 Discord:<br><a href="https://bibiopotoleando.github.io/discord/index.html">https://bibiopotoleando.github.io/discord/index.html</a></p>
+  </div>
+  <a class="volver" href="#indice">↑ Volver al menú</a>
 </section>
 
 
-  <section id="que-son"><h2>✨ ¿Qué son las insignias?</h2>
-
-    <div class="card">
-      <p>
-        Las insignias son logros coleccionables exclusivos de nuestra comunidad.
-        Se calculan y desbloquean automáticamente cuando alcanzas determinados hitos
-        dentro de las diferentes dinámicas del canal.
-      </p>
-
-      <p>
-        Cada medalla representa un pequeño pedacito de tu recorrido:
-        directos compartidos, horas de estudio, tareas completadas, retos superados,
-        árboles, XP de minijuegos, ejercicio, rachas y otras formas de participar.
-      </p>
-
-      <p>
-        Algunas llegan rápido. Otras requieren una cantidad de constancia
-        ligeramente preocupante. 😌
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="como"><h2>🎮 ¿Cómo se consiguen?</h2>
-
-    <div class="card">
-      <ul>
-        <li><strong>📺 Streams:</strong> Por acumular asistencia acompañándonos en distintos directos.</li>
-
-        <li><strong>🔥 Rachas:</strong> Por mantener una racha de directos consecutivos vistos y compartirla en el chat de Twitch.</li>
-
-        <li><strong>📚 Estudio:</strong> Por acumular horas totales de enfoque y productividad en las sesiones.</li>
-
-        <li><strong>📝 Tareas:</strong> Por completar tareas de tu lista usando el sistema de tareas del canal.</li>
-
-        <li><strong>🎯 Retos:</strong> Por completar los retos personales de movimiento, descanso y autocuidado.</li>
-
-        <li><strong>💪 Ejercicio:</strong> Por registrar tus días de actividad física y autocuidado.</li>
-
-        <li><strong>🎮 Minijuegos:</strong> Por acumular XP conseguida directamente al acertar respuestas en las trivias y juegos de los descansos.</li>
-
-        <li><strong>🌳 Bosque:</strong> Por ampliar tu colección y conseguir árboles dentro del bosque virtual.</li>
-
-        <li><strong>🫶 Apoyo:</strong> Por participar en determinadas dinámicas de apoyo y comunidad.</li>
-
-        <li><strong>✨ General:</strong> Logros maestros que avanzan según la cantidad total de insignias diferentes que hayas conseguido.</li>
-      </ul>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="tareas"><h2>📝 Insignias de tareas</h2>
-
-    <div class="card tasks">
-      <p>
-        Cada vez que completas una tarea con
-        <code>!hecha</code>, <code>!feito</code> o <code>!feita</code>,
-        esa tarea suma para tu progreso acumulado.
-        Las insignias se desbloquean automáticamente al alcanzar estas metas:
-      </p>
-
-      <div class="milestones">
-        <div class="milestone">📝 <strong>Primera tachada</strong> · 1 tarea</div>
-        <div class="milestone">✏️ <strong>Ya arrancamos</strong> · 10 tareas</div>
-        <div class="milestone">✅ <strong>Lista en marcha</strong> · 25 tareas</div>
-        <div class="milestone">📋 <strong>Tachadora oficial</strong> · 50 tareas</div>
-        <div class="milestone">💯 <strong>100 fuera</strong> · 100 tareas</div>
-        <div class="milestone">🔥 <strong>Peligro para las listas</strong> · 200 tareas</div>
-        <div class="milestone">🖊️ <strong>No deja una viva</strong> · 350 tareas</div>
-        <div class="milestone">📚 <strong>Medio millar tachado</strong> · 500 tareas</div>
-        <div class="milestone">⚡ <strong>Máquina de checks</strong> · 750 tareas</div>
-        <div class="milestone">🌟 <strong>Mil y contando</strong> · 1.000 tareas</div>
-        <div class="milestone">👑 <strong>Verdugo del post-it</strong> · 1.500 tareas</div>
-        <div class="milestone">🏆 <strong>Leyenda del tachón</strong> · 2.000 tareas</div>
-      </div>
-
-      <p>
-        Puedes consultar las metas desde el chat con
-        <code>!insigniastareas</code> o, en gallego,
-        <code>!insigniastarefas</code>.
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="retos"><h2>🎯 Insignias de retos personales</h2>
-
-    <div class="card challenges">
-      <p>
-        Los retos personales también tienen su propia colección de insignias.
-        Cada reto que termines correctamente suma <strong>1 reto conseguido</strong>
-        a tu progreso histórico.
-      </p>
-
-      <p>
-        Si un reto no se completa, no suma. Los retos antiguos que ya habías superado
-        también cuentan para tu progreso.
-      </p>
-
-      <div class="milestones">
-        <div class="milestone">🎯 <strong>Reto aceptado</strong> · 1 reto</div>
-        <div class="milestone">🌱 <strong>Esto ya empieza</strong> · 3 retos</div>
-        <div class="milestone">✨ <strong>Cinco y contando</strong> · 5 retos</div>
-        <div class="milestone">💪 <strong>Se lo toma en serio</strong> · 10 retos</div>
-        <div class="milestone">👀 <strong>Reto tras reto</strong> · 20 retos</div>
-        <div class="milestone">🌿 <strong>Descanso activo</strong> · 30 retos</div>
-        <div class="milestone">🔥 <strong>50 retos después</strong> · 50 retos</div>
-        <div class="milestone">⚡ <strong>Constancia en movimiento</strong> · 75 retos</div>
-        <div class="milestone">💯 <strong>100 retos superados</strong> · 100 retos</div>
-        <div class="milestone">🏆 <strong>Leyenda de los retos</strong> · 150 retos</div>
-        <div class="milestone">👑 <strong>Doble centenario</strong> · 200 retos</div>
-        <div class="milestone">🔥 <strong>Racha imparable</strong> · 250 retos</div>
-        <div class="milestone">💪 <strong>Fanático de los retos</strong> · 300 retos</div>
-        <div class="milestone">🚀 <strong>Reto Élite</strong> · 400 retos</div>
-        <div class="milestone">🏅 <strong>Maestría de retos</strong> · 500 retos</div>
-      </div>
-
-      <p>
-        Puedes consultar las metas con:
-        <code>!insigniasretos</code>
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="minijuegos"><h2>🎮 Insignias de minijuegos</h2>
-
-    <div class="card minigames">
-      <p>
-        Las insignias de minijuegos avanzan ahora según la
-        <strong>XP conseguida directamente al acertar respuestas</strong>.
-      </p>
-
-      <p>
-        La XP puede variar según el minijuego y las pistas utilizadas.
-        Los bonus adicionales de rachas o logros siguen existiendo dentro del sistema,
-        pero no se vuelven a sumar al contador de insignias para evitar contar la misma
-        recompensa dos veces.
-      </p>
-
-      <div class="milestones">
-        <div class="milestone">🎯 <strong>Primer acierto</strong> · 30 XP</div>
-        <div class="milestone">👀 <strong>Ojo despierto</strong> · 90 XP</div>
-        <div class="milestone">🔎 <strong>Ojo fino</strong> · 300 XP</div>
-        <div class="milestone">🧠 <strong>Cerebrito</strong> · 900 XP</div>
-        <div class="milestone">🎮 <strong>Maestría mini</strong> · 2.250 XP</div>
-        <div class="milestone">✨ <strong>Descanso brillante</strong> · 4.500 XP</div>
-        <div class="milestone">🏆 <strong>Leyenda del descanso</strong> · 9.000 XP</div>
-        <div class="milestone">⚡ <strong>Mente rápida</strong> · 15.000 XP</div>
-        <div class="milestone">👑 <strong>Rey/Reina del minijuego</strong> · 30.000 XP</div>
-      </div>
-
-      <p>
-        Puedes consultar las metas con
-        <code>!insigniasminijuegos</code>
-        o, en gallego,
-        <code>!insigniasminixogos</code>.
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="rachas"><h2>🔥 Rachas de visualización</h2>
-
-    <div class="card streak">
-      <p>
-        Las insignias de racha premian haber estado presente en varios directos consecutivos.
-      </p>
-
-      <p>
-        <strong>Importante:</strong> para que el sistema pueda registrar tu racha,
-        tienes que <strong>compartirla en el chat de Twitch</strong> cuando aparezca la opción.
-      </p>
-
-      <p>
-        Al compartirla, el bot comprobará automáticamente cuántos directos seguidos llevas
-        y desbloqueará todas las insignias de racha que te correspondan y que todavía no tengas.
-      </p>
-
-      <p>
-        Empieza siendo una visita casual y puede terminar en
-        <em>“casi paga alquiler”</em>. Tú sabrás hasta dónde quieres llegar. 🏠
-      </p>
-
-      <p>
-        Puedes consultar las metas con:
-        <code>!insigniasrachas</code>
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="estatus"><h2>🏅 Estatus y Prestigio</h2>
-
-    <div class="card important">
-      <p>
-        Las insignias no otorgan monedas ni premios físicos; funcionan como un
-        <strong>sistema de coleccionismo, progreso y estatus visual</strong>.
-      </p>
-
-      <p>
-        Al desbloquear logros aumentas tu colección, avanzas en las insignias generales
-        y puedes aparecer entre los mayores coleccionistas del canal.
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="comandos"><h2>💬 Comandos de insignias</h2>
-
-    <div class="card">
-      <ul>
-        <li><code>!insignias</code> → Muestra todas las categorías disponibles.</li>
-        <li><code>!insigniasstreams</code> → Consulta las metas de asistencia a streams.</li>
-        <li><code>!insigniasrachas</code> → Consulta las metas de rachas de visualización.</li>
-        <li><code>!insigniasestudio</code> → Consulta las metas de estudio.</li>
-        <li><code>!insigniastareas</code> → Consulta las metas de tareas completadas.</li>
-        <li><code>!insigniasretos</code> → Consulta las metas de retos personales.</li>
-        <li><code>!insigniasapoyo</code> → Consulta las metas de apoyo.</li>
-        <li><code>!insigniasejercicio</code> → Consulta las metas de ejercicio.</li>
-        <li><code>!insigniasminijuegos</code> → Consulta las metas de minijuegos por XP.</li>
-        <li><code>!insigniasbosque</code> → Consulta las metas del bosque virtual.</li>
-        <li><code>!insigniasgeneral</code> → Consulta las metas generales.</li>
-
-        <li>
-          <code>!misinsignias</code> →
-          Consulta cuántas insignias has desbloqueado y tu progreso por categorías.
-        </li>
-
-        <li>
-          <code>!infoinsignias</code> →
-          Envía un resumen básico del sistema en el chat.
-        </li>
-
-        <li>
-          <code>!rankinginsignias</code> →
-          Muestra el Top 5 de mayores coleccionistas de insignias del canal.
-        </li>
-
-        <li><code>Actualizar álbum de insignias</code> → Refresca tu álbum visual con tus medallas actuales. <strong>3.000 puntos</strong>.</li>
-        <li><code>Ver mis Insignias</code> → Te permite consultar tu colección visual de insignias. <strong>10.000 puntos</strong>.</li>
-      </ul>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="album"><h2>📖 Álbum visual web</h2>
-
-    <div class="card">
-      <p>
-        Cada espectador puede tener su propio álbum visual de insignias.
-      </p>
-
-      <p>
-        Las medallas que ya hayas conseguido aparecerán a todo color,
-        mientras que aquellas cuyos requisitos todavía no hayas alcanzado
-        permanecerán bloqueadas y en escala de grises.
-      </p>
-
-      <p>
-        Cuando quieras actualizar tu álbum canjea <code>Actualizar álbum de insignias</code>. Pero antes debes canjear: <code>Ver mis Insignias</code> para crearlo.
-      </p>
-
-      <p>
-        En el álbum encontrarás también las categorías
-        <strong>📝 Tareas</strong>,
-        <strong>🎯 Retos personales</strong>
-        y los <strong>🎮 Minijuegos medidos por XP</strong>,
-        junto al resto de categorías.
-      </p>
-    </div>
-  
-
-<div class="card">
-  <h3>👀 Ejemplo rápido de cómo se ve</h3>
-  <p>Así se ve un álbum real de insignias del canal: algunas medallas aparecen ya desbloqueadas y otras siguen bloqueadas hasta que alcances sus metas.</p>
-  <div style="margin:18px 0">
-    <img src="guia-insignias/imagenes/image.png" alt="Ejemplo de álbum de insignias del canal" style="width:100%;max-width:860px;border-radius:18px;border:1px solid rgba(90,70,50,.15);box-shadow:0 8px 24px rgba(0,0,0,.08);display:block;margin:auto">
-  </div>
-  <p style="margin-top:12px">La idea es que puedas ver de un vistazo tu progreso, las categorías y todo lo que te queda por desbloquear ✨</p>
+    <div class="footer">🏅 Más vistosa, más clara y con un fondo menos tristón, como Dios manda.</div>
+  </main>
 </div>
 
-<a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="ranking"><h2>🏆 Ranking de coleccionistas</h2>
-
-    <div class="card">
-      <p>
-        Todas las insignias diferentes que desbloquees cuentan para tu colección total.
-      </p>
-
-      <p>
-        Con <code>!rankinginsignias</code> puedes consultar el Top 5 de usuarios
-        con más insignias desbloqueadas.
-      </p>
-
-      <p>
-        No importa de qué categoría procedan:
-        Streams, Rachas, Estudio, Tareas, Retos, Ejercicio, Minijuegos,
-        Bosque, Apoyo y General forman parte de tu colección.
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="general"><h2>🌟 Categoría General</h2>
-
-    <div class="card">
-      <p>
-        Las insignias generales no miden una única actividad.
-        Se desbloquean según la cantidad total de
-        <strong>insignias diferentes</strong> que hayas conseguido.
-      </p>
-
-      <p>
-        Para avanzar cuentan tus logros de Streams, Rachas, Estudio, Tareas,
-        Retos, Ejercicio, Minijuegos, Bosque y Apoyo.
-      </p>
-
-      <p>
-        Con las nuevas insignias de retos también aumenta el recorrido total
-        disponible dentro de la colección.
-      </p>
-
-      <p>
-        Así que no hace falta obsesionarse con una sola categoría:
-        participar un poquito en todo también tiene premio. ✨
-      </p>
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <section id="guias"><h2>🔗 Guías relacionadas</h2>
-
-    <div class="links">
-
-      <p>
-        🌳 Bosque virtual:<br>
-        <a href="https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/bosque-visual/guia_bosque.html
-        </a>
-      </p>
-
-      <p>
-        📝 Tareas:<br>
-        <a href="https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/guia-tareas/guia_tareas.html
-        </a>
-      </p>
-
-      <p>
-        🎁 Canjeos:<br>
-        <a href="https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/guia-canjeos/guia_canjeos.html
-        </a>
-      </p>
-
-      <p>
-        📌 Estados:<br>
-        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/estados.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/estados-y-bebidas/estados.html
-        </a>
-      </p>
-
-      <p>
-        ☕ Bebidas:<br>
-        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/estados-y-bebidas/bebidas.html
-        </a>
-      </p>
-
-      <p>
-        🎯 Retos:<br>
-        <a href="https://bibiopotoleando.github.io/retos/retos.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/retos/retos.html
-        </a>
-      </p>
-
-      <p>
-        🎮 Minijuego:<br>
-        <a href="https://bibiopotoleando.github.io/minijuego-guia/index.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/minijuego-guia/index.html
-        </a>
-      </p>
-
-      <p>
-        🏅 Insignias:<br>
-        <a href="https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/guia-insignias/guia_insignias.html
-        </a>
-      </p>
-
-      <p>
-        📦 Material:<br>
-        <a href="https://bibiopotoleando.github.io/estados-y-bebidas/material.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/estados-y-bebidas/material.html
-        </a>
-      </p>
-
-      <p>
-        👾 Discord:<br>
-        <a href="https://bibiopotoleando.github.io/discord/index.html"
-           target="_blank" rel="noopener noreferrer">
-          https://bibiopotoleando.github.io/discord/index.html
-        </a>
-      </p>
-
-    </div>
-  <a class="volver" href="#indice">↑ Volver arriba</a></section>
-
-
-  <div class="footer">
-    🏅 Gracias por formar parte y construir cada día el rincón opotoleante ✨
-  </div>
-
-</main>
-
-<a class="top-btn" href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
-
-
-<div class="nav-flotante" aria-label="Navegación rápida">
-  <a href="#indice" aria-label="Ir al menú de esta guía">☰ Menú</a>
-  <a href="#arriba" aria-label="Volver arriba">↑ Arriba</a>
+<div class="floating">
+  <a href="#indice">☰ Menú</a>
+  <a href="#top">↑ Arriba</a>
 </div>
-
 </body>
 </html>
