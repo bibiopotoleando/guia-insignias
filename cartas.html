@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tu carta · El Aquelarre</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(ellipse at 65% 5%,#3e304d,#171824 65%);font:15px/1.5 system-ui,Arial,sans-serif;color:#faf1e7;padding:20px}main{width:min(560px,100%)}h1{font:700 32px Georgia,serif;margin:4px 0 8px;text-align:center}p.sub{color:#d1c5c5;text-align:center}form{display:flex;gap:8px;margin:16px 0}input{border:1px solid #a88989;color:#fff;background:#282635;border-radius:11px;letter-spacing:.07em;font:700 17px system-ui;width:100%;min-width:0;padding:13px;text-transform:uppercase}button{border:1px solid #ddc2a6;background:#dbc09f;color:#29212e;font-weight:800;padding:11px 17px;border-radius:11px;cursor:pointer}button:disabled{opacity:.4;cursor:default}#msg{min-height:24px;color:#f3d7b6;text-align:center;margin:4px 0 14px}.card{display:none;background:linear-gradient(145deg,#5b415e,#28243a 58%,#49374b);border:5px double #e0b991;border-radius:24px;padding:19px;box-shadow:0 18px 60px #070512c9;max-width:440px;margin:22px auto}.card.on{display:block}.smallcaps{text-align:center;font-size:12px;letter-spacing:.22em;font-weight:800;color:#f2d5ac;text-transform:uppercase}.name{text-align:center;font:700 28px/1.15 Georgia,serif;margin:9px 0}.portrait{position:relative;min-height:175px;display:grid;place-items:center;border-radius:12px;border:2px solid #bfa28d;background:radial-gradient(circle at 50% 35%,#8b7390,#252539 78%);overflow:hidden}.portrait.meiga{background:radial-gradient(circle at 50% 35%,#598c7a,#202a38 78%)}.portrait.fantasma{background:radial-gradient(circle at 50% 35%,#9994bc,#252540 78%)}.portrait.vampiro{background:radial-gradient(circle at 50% 35%,#965769,#2a2036 78%)}.symbol{font-size:88px;filter:drop-shadow(0px 8px 7px #0009)}.moon{position:absolute;right:28px;top:15px;font-size:40px;opacity:.58}.spark{position:absolute;left:25px;bottom:20px;font-size:35px;opacity:.7}.stats{text-align:center;color:#ffe2bd;letter-spacing:.09em;margin:10px 0}.flavor{text-align:center;font-family:Georgia,serif;font-style:italic;font-size:16px;line-height:1.5;margin:12px auto;max-width:360px}.instructions{background:#18162691;padding:12px 14px;border:1px solid #bfa28d80;border-radius:12px;margin-top:14px}.instructions h2{font-size:16px;margin:0 0 6px}.instructions p{margin:4px 0;font-size:13px}.foot{color:#d7c8c3;font-size:12px;text-align:center;line-height:1.45;margin-top:16px}#cooldown{font-variant-numeric:tabular-nums;color:#f1d0b2;text-align:center;margin-top:8px}
+</style></head><body><main><h1>🎴 El Aquelarre</h1><p class="sub">Tu carta personal se revela con el código que recibiste del bot. Las demás siguen ocultas.</p><form id="f" style="flex-wrap:wrap"><input id="user" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Tu usuario de Twitch (sin @)" maxlength="35" required aria-label="Nombre de usuario de Twitch"><input id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Tu código de carta" maxlength="30" required aria-label="Código de carta"><button type="submit">Revelar</button></form><div id="msg" aria-live="polite"></div><div id="cooldown"></div><article class="card" id="card"><div class="smallcaps">Bosque encantado · carta del chat</div><h2 class="name" id="name"></h2><div class="portrait" id="portrait"><span class="moon">☾</span><span class="symbol" id="emoji"></span><span class="spark">✦</span></div><div class="stats" id="stats"></div><div class="flavor" id="desc"></div><section class="instructions"><h2>⚔️ Cómo combatir con esta carta</h2><p>⚔️ <b>!jugar atacar:</b> +2 de fuerza; −2 si el rival te domina.</p><p>🛡️ <b>!jugar defender:</b> +1 y ganas los empates.</p><p>🔮 <b>!jugar hechizo:</b> +3 con ventaja de familia; si no, −1. Solo uno en toda la partida.</p><p>🔄 <b>!jugar cambio:</b> un cambio de personaje por partida. ¡Ojo! Un código nuevo no se podrá consultar hasta acabar el minuto de espera.</p><p>📜 Meiga vence a Fantasma · Fantasma vence a Vampiro · Vampiro vence a Meiga. La Casa oculta su poder hasta revelar.</p></section></article><div class="foot">Una consulta por minuto <b>en este navegador</b>. GitHub Pages no identifica cuentas de Twitch ni bloquea otros dispositivos. El código está asociado a tu nombre y al día, pero el formulario no verifica tu identidad en Twitch: otros pueden introducir tu nombre y copiar tu código público.</div></main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), LOCK='aquelarre:ultimaConsulta:v1';let catalogue=null;
+function b64ToBytes(b64){return Uint8Array.from(atob(b64),x=>x.charCodeAt(0));}
+function toHex(ab){return Array.from(new Uint8Array(ab),b=>b.toString(16).padStart(2,'0')).join('');}
+function cooldownMs(){const last=Number(localStorage.getItem(LOCK)||0);return Math.max(0,60000-(Date.now()-last));}
+function showLock(){let ms=cooldownMs();$('cooldown').textContent=ms?'⏳ Próximo código dentro de '+Math.ceil(ms/1000)+' s':'';$('f').querySelector('button').disabled=!!ms;}
+function buildCard(v){$('name').textContent=v.nombre;$('emoji').textContent=v.emoji;$('stats').textContent=v.familia.toUpperCase()+' · Fuerza '+v.poder;$('desc').textContent=v.descripcion;$('portrait').className='portrait '+v.familia;$('card').className='card on';}
+async function decode(fullcode,user){
+ const encoder=new TextEncoder();
+ const code=fullcode.slice(0,15),suffix=fullcode.slice(15);
+ if(code.length!==15 || suffix.length!==6)throw new Error('El código debe tener 21 caracteres, incluido el sello de usuario.');
+ const dia=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,'');
+ const chk=await crypto.subtle.digest('SHA-256',encoder.encode(code+'|'+user+'|'+dia));
+ if(toHex(chk).slice(0,6).toUpperCase()!==suffix)throw new Error('El código no corresponde a ese usuario o ya ha cambiado el día.');
+ const hash=await crypto.subtle.digest('SHA-256',encoder.encode(code));
+ const record=catalogue.cartas[toHex(hash)]; if(!record)throw new Error('Código no reconocido. Comprueba las letras y números.');
+ const hashKey=await crypto.subtle.digest('SHA-256',encoder.encode('ALBA-CARTAS-2026|'+code));
+ const key=await crypto.subtle.importKey('raw',hashKey,{name:'AES-GCM'},false,['decrypt']);
+ const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64ToBytes(record.iv),additionalData:encoder.encode('alba-cartas-v1')},key,b64ToBytes(record.data));
+ return JSON.parse(new TextDecoder().decode(plain));
+}
+$('f').addEventListener('submit',async e=>{e.preventDefault(); if(cooldownMs())return;
+ const code=$('code').value.toUpperCase().replace(/[\s-]/g,'').trim();
+ const user=$('user').value.toLowerCase().trim().replace(/^@/,'');if(!code||!user)return;
+ localStorage.setItem(LOCK,String(Date.now()));showLock();$('msg').textContent='Consultando los secretos del bosque…';$('card').className='card';
+ try{if(!catalogue){const res=await fetch('./catalogo_cifrado.json',{cache:'no-store'});if(!res.ok)throw new Error('Falta catalogo_cifrado.json junto a la página.');catalogue=await res.json();}
+ const c=await decode(code,user);buildCard(c);$('msg').textContent='¡Tu personaje ha aparecido!';}
+ catch(err){$('msg').textContent=err.message||'No se pudo descifrar esa carta.';}
+});
+setInterval(showLock,1000);showLock();
+</script></body></html>
